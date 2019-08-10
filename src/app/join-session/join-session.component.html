@@ -1,0 +1,30 @@
+<div class="wrapper join-session">
+    <div class="form-card">
+        <div class="form-header">
+            <h2 class="text-brand">Welcome!</h2>
+            <p class="text-brand">No long talk!</p>
+            <p class="text-brand">Write a Story with a friend as cool as you.</p>
+        </div>
+
+        <form #signUpForm="ngForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label>What's your name?</label>
+                <input type="text" name="playerName" id="playerName"  required>
+            </div>
+            <div class="form-group">
+                <label>What's your email?</label>
+                <input type="email" name="playerEmail" id="playerEmail" [(ngModel)]="model.storyOwner" required>
+            </div>
+            <div class="form-group" [hidden]="!storyOwner">
+                <label>What's the title of the story?</label>
+                <input type="text" name="title" id="title" [(ngModel)]="model.storyTitle">
+            </div>
+
+            <button type="submit" id="submitButton" [disabled]="!signUpForm.valid">START SESSION</button>
+        </form>
+    </div>
+</div>
+
+<!-- name properties according to https://documenter.getpostman.com/view/6535687/S11NNHXH  -->
+
+<!-- <app-modal-test></app-modal-test> -->

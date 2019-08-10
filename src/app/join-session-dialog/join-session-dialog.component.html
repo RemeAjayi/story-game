@@ -1,0 +1,13 @@
+<h2 mat-dialog-title></h2>
+<p>You're almost ready to play!</p>
+<p>Share this link to invite your friends!</p>
+<mat-dialog-content>
+    <p>https:sgx-api.herokuapp.com/story/join/{{code}}</p>
+    <p>localhost:4200/story/join/{{code}}</p>
+    <button>Share on Twitter</button>
+    <button>Share on Facebook</button>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button class="mat-raised-button" (click)="close()">Close</button>
+</mat-dialog-actions>

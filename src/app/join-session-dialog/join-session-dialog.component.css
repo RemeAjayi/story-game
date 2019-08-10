@@ -1,0 +1,20 @@
+.form-card{
+    margin: 0 auto;
+    display: flex;
+    align-self: center;
+    min-height: 500px;
+    background-color: #fff;
+}
+.join-session, label
+{
+    background-color: #0084b4;
+    text-align: center;
+}
+.text-brand
+{
+    color: #0084b4;
+}
+.text-secondary
+{
+    color: #707070;
+}
