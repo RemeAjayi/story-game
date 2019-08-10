@@ -59,9 +59,11 @@ export class JoinSessionComponent implements OnInit {
     console.log(JSON.stringify(this.model));
     // if user navigated through invite code
     if (this.storyId) {
+      debugger;
       // call join session method
       this.storyService.joinSession(this.model, this.storyId).subscribe(
         (data) => {
+          this.inviteCode = data._id;
           // direct to write story component on success
           this.router.navigate(['/story', this.inviteCode], { relativeTo: this.route })
         },
@@ -74,8 +76,7 @@ export class JoinSessionComponent implements OnInit {
     else {
       this.storyService.addNewStory(this.model).subscribe(
         (data) => {
-          console.log(data);
-        this.inviteCode = data._id;
+         this.inviteCode = data._id;
 
           this.openDialog();
           return console.log(this.inviteCode);
