@@ -6,6 +6,7 @@ import { Story } from '../models/story';
 import { JoinSessionDialogComponent } from '../join-session-dialog/join-session-dialog.component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
+import { PlayerService } from '../player.service';
 
 @Component({
   selector: 'app-join-session',
@@ -20,6 +21,7 @@ export class JoinSessionComponent implements OnInit {
 
   constructor(
     private storyService: StoryService,
+    private playerService: PlayerService,
     private dialog: MatDialog,
     private router: Router,
     private route: ActivatedRoute) {
@@ -59,11 +61,11 @@ export class JoinSessionComponent implements OnInit {
     console.log(JSON.stringify(this.model));
     // if user navigated through invite code
     if (this.storyId) {
-      debugger;
       // call join session method
       this.storyService.joinSession(this.model, this.storyId).subscribe(
         (data) => {
           this.inviteCode = data._id;
+           this.playerService.setAuthor(data.storyOwner);
           // direct to write story component on success
           this.router.navigate(['/story', this.inviteCode], { relativeTo: this.route })
         },
@@ -77,6 +79,7 @@ export class JoinSessionComponent implements OnInit {
       this.storyService.addNewStory(this.model).subscribe(
         (data) => {
          this.inviteCode = data._id;
+          this.playerService.setAuthor(data.storyOwner);
 
           this.openDialog();
           return console.log(this.inviteCode);

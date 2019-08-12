@@ -10,6 +10,7 @@ import { Socket } from 'ngx-socket-io';
   providedIn: 'root'
 })
 export class StoryService {
+  
   // private api = 'https://sgx-api.herokuapp.com/story';
   private create_story = 'http://localhost:3000/story';
   private join_session = 'http://localhost:3000/story/join/';
@@ -23,12 +24,23 @@ export class StoryService {
   joinSession(story: Story, id): Observable<any> {
     return this.http.post<Story>(this.join_session + id, story);
   }
-  getDocument(id: string) {
-    this.socket.emit('getDoc', id);
-  }
+
   //  this.socket.on('disconnect',() =>{
   //   console.log('disconnected from server');
   // });
+
+  // setNewEntry(entry){
+  //   return entry;
+  // }
+
+  // this.socket.on('new entry', (entry)=>{
+  //    this.setNewEntry(entry)
+  // });
+
+  addNewEntry(id, entry)
+  {
+    this.socket.emit('new entry', { id, entry});
+  }
 }
 //POST: player joins story session
 // joinStory
