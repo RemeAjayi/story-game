@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { Story } from './models/story';
 import { Socket } from 'ngx-socket-io';
 
@@ -25,22 +25,17 @@ export class StoryService {
     return this.http.post<Story>(this.join_session + id, story);
   }
 
-  //  this.socket.on('disconnect',() =>{
-  //   console.log('disconnected from server');
-  // });
-
-  // setNewEntry(entry){
-  //   return entry;
-  // }
-
-  // this.socket.on('new entry', (entry)=>{
-  //    this.setNewEntry(entry)
-  // });
-
-  addNewEntry(id, entry)
+  addNewEntry(obj)
   {
-    this.socket.emit('new entry', { id, entry});
+    this.socket.emit('new entry', obj);
   }
+
+  getMessages() {
+    return this.socket
+      .fromEvent<any>('new entry')
+      .pipe(map(data => data.obj));
+  }
+
 }
 //POST: player joins story session
 // joinStory

@@ -3,6 +3,7 @@ import { Entry } from '../models/entry';
 import { NgModel } from '@angular/forms';
 import { StoryService } from '../story.service';
 import { PlayerService } from '../player.service';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-write-story',
   templateUrl: './write-story.component.html',
@@ -11,18 +12,34 @@ import { PlayerService } from '../player.service';
 export class WriteStoryComponent implements OnInit {
 
   model: Entry;
+  storyId: string;
+  messages: [];
 
-  constructor(private storyService: StoryService, private playerService: PlayerService) {
+  constructor(
+    private storyService: StoryService,
+    private playerService: PlayerService,
+    private route: ActivatedRoute) {
     this.model = new Entry('', '', 2);
    }
 
   ngOnInit() {
+    this.storyId = this.route.snapshot.paramMap.get('id');
+    this.storyService.addNewEntry({ id: this.storyId, data: this.model });
+
+    this.storyService.getMessages().subscribe(data =>{
+      console.log(data);
+    });
   }
+
  onSubmit()
  {
   //  pass story details with a dataservice and retrieve author  and story id from there
    this.model.author = this.playerService.getAuthor();
    this.model.timestamp = Date.now();
-   this.storyService.addNewEntry('5d4ee6cd0312902f646794dc',this.model);
+   let obj = {
+     id: this.storyId,
+     data: this.model
+   };
+   this.storyService.addNewEntry(obj);
  }
 }

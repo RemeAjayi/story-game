@@ -1,3 +1,6 @@
+<div *ngFor="let message of messages">
+    {{message}}
+</div>
 <form #writeStoryForm="ngForm" (ngSubmit)="onSubmit()">
     <input type="text" name="entry" [(ngModel)]="model.message">
     <button type="submit">Send</button>
