@@ -1,7 +1,12 @@
-<div *ngFor="let message of messages">
+<div class="wrapper">
+<div class="storyCard">
+<div class="message-box" *ngFor="let message of messages">
     {{message}}
 </div>
-<form #writeStoryForm="ngForm" (ngSubmit)="onSubmit()">
-    <input type="text" name="entry" [(ngModel)]="model.message">
-    <button type="submit">Send</button>
+<form class="writeStoryForm" #writeStoryForm="ngForm" (ngSubmit)="onSubmit()">
+    <input class="form-field pr-1" type="text" name="entry" [(ngModel)]="model.message">
+    <button class="button_send" type="submit">Send</button>
 </form>
+</div>
+
+</div>

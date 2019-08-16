@@ -9,18 +9,18 @@
         <form #signUpForm="ngForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
                 <label>What's your name?</label>
-                <input type="text" name="playerName" id="playerName"  required>
+                <input type="text" name="playerName" id="playerName" class="form-field" required>
             </div>
             <div class="form-group">
                 <label>What's your email?</label>
-                <input type="email" name="playerEmail" id="playerEmail" [(ngModel)]="model.storyOwner" required>
+                <input type="email" name="playerEmail" id="playerEmail" class="form-field" [(ngModel)]="model.storyOwner" required>
             </div>
             <div class="form-group" [hidden]="!storyOwner">
                 <label>What's the title of the story?</label>
-                <input type="text" name="title" id="title" [(ngModel)]="model.storyTitle">
+                <input type="text" name="title" id="title" class="form-field" [(ngModel)]="model.storyTitle">
             </div>
 
-            <button type="submit" id="submitButton" [disabled]="!signUpForm.valid">START SESSION</button>
+            <button type="submit" class="button--brand" id="submitButton" [disabled]="!signUpForm.valid">START SESSION</button>
         </form>
     </div>
 </div>

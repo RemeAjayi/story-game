@@ -1,20 +1,21 @@
 .form-card{
     margin: 0 auto;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-self: center;
     min-height: 500px;
+    width: 500px;
     background-color: #fff;
+    box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
+-webkit-box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
+    padding: 1rem;
 }
-.join-session, label
+.join-session
 {
     background-color: #0084b4;
     text-align: center;
-}
-.text-brand
-{
-    color: #0084b4;
-}
-.text-secondary
-{
-    color: #707070;
+    align-content: center;
+    height: 100vh;
 }
