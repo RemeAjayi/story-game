@@ -3,10 +3,10 @@
 <div class="message-box" *ngFor="let message of messages">
     {{message}}
 </div>
-<form class="writeStoryForm" #writeStoryForm="ngForm" (ngSubmit)="onSubmit()">
-    <input class="form-field pr-1" type="text" name="entry" [(ngModel)]="model.message">
-    <button class="button_send" type="submit">Send</button>
-</form>
+
+    <input class="form-field pr-1" type="text" name="entry" [(ngModel)]="message">
+    <button class="button_send" type="submit" (click)="onSubmit()">Send</button>
+
 </div>
 
 </div>

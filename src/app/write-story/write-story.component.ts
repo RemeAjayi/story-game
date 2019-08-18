@@ -14,19 +14,20 @@ export class WriteStoryComponent implements OnInit {
   model: Entry;
   storyId: string;
   messages: [];
+  message: string;
 
   constructor(
     private storyService: StoryService,
     private playerService: PlayerService,
     private route: ActivatedRoute) {
-    this.model = new Entry('', '', 2);
+    this.model = new Entry(' ', ' ', 2);
    }
 
   ngOnInit() {
     this.storyId = this.route.snapshot.paramMap.get('id');
-    this.storyService.addNewEntry({ id: this.storyId, data: this.model });
-
-    this.storyService.getMessages().subscribe(data =>{
+    this.storyService.addNewEntry('hello');
+    debugger
+    this.storyService.getMessages().subscribe((data) => {
       console.log(data);
     });
   }
@@ -36,10 +37,12 @@ export class WriteStoryComponent implements OnInit {
   //  pass story details with a dataservice and retrieve author  and story id from there
    this.model.author = this.playerService.getAuthor();
    this.model.timestamp = Date.now();
-   let obj = {
+   const obj = {
      id: this.storyId,
      data: this.model
    };
-   this.storyService.addNewEntry(obj);
+   this.storyService.addNewEntry(this.message);
+   debugger;
+  //  this.message = '';
  }
 }
