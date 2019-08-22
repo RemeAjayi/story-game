@@ -33,6 +33,11 @@ export class StoryService {
   {
     debugger;
     this.socket.emit('new entry', message);
+    // debugger;
+    // this.socket.on('new entry', (message) => {
+    //   debugger;
+    //   console.log('runs');
+    // });
   }
 
   // getMessages() {
