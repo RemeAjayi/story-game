@@ -29,3 +29,11 @@ pr-1
 {
     padding-right: 1rem;
 }
+.received
+{
+  color: red;
+}
+.sent
+{
+  color: green;
+}

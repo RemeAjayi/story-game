@@ -1,7 +1,9 @@
 <div class="wrapper">
 <div class="storyCard">
-<div class="message-box" *ngFor="let message of messages">
-    {{message}}
+<div class="message-box" >
+  <li *ngFor="let message of messages">
+   <span [className] = 'message.author == author? "sent" : "received"'>{{message.message}}</span>
+  </li>
 </div>
 
     <input class="form-field pr-1" type="text" name="entry" [(ngModel)]="message">

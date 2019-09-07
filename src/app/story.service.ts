@@ -3,7 +3,6 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Story } from './models/story';
-// import { Socket } from 'ngx-socket-io';
 import * as io from 'socket.io-client';
 
 
@@ -29,35 +28,16 @@ export class StoryService {
     return this.http.post<Story>(this.join_session + id, story);
   }
 
-  addNewEntry(message)
-  {
-    debugger;
-    this.socket.emit('new entry', message);
-    // debugger;
-    // this.socket.on('new entry', (message) => {
-    //   debugger;
-    //   console.log('runs');
-    // });
+  addNewEntry(obj) {
+    this.socket.emit('new entry', obj);
   }
-
-  // getMessages() {
-  //   return this.socket
-  //     .fromEvent<any>('new entry')
-  //     .pipe(map(data => data.obj));
-  // }
   getMessages(): Observable<any> {
-    // return this.observable = new Observable((observer) => {
-    //   this.socket.on('new entry', (data) => observer.next(data)
-    //   );
-    // })
-    return Observable.create((observer) => {
-      this.socket.on('new entry', (message) => {
-        console.log('runs');
-        observer.next(message);
-      });
+    return this.observable = new Observable((observer) => {
+      this.socket.on('new entry', (data) => observer.next(data)
+      );
     });
   }
 
 }
-//POST: player joins story session
+// POST: player joins story session
 // joinStory

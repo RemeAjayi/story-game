@@ -1,12 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig } from '@angular/material/dialog';
-import { StoryService } from '../story.service';
-import { Story } from '../models/story';
-import { JoinSessionDialogComponent } from '../join-session-dialog/join-session-dialog.component';
-import { Router, ActivatedRoute } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
-import { PlayerService } from '../player.service';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig} from '@angular/material/dialog';
+import {StoryService} from '../story.service';
+import {Story} from '../models/story';
+import {JoinSessionDialogComponent} from '../join-session-dialog/join-session-dialog.component';
+import {Router, ActivatedRoute} from '@angular/router';
+import {switchMap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-join-session',
@@ -21,7 +20,6 @@ export class JoinSessionComponent implements OnInit {
 
   constructor(
     private storyService: StoryService,
-    private playerService: PlayerService,
     private dialog: MatDialog,
     private router: Router,
     private route: ActivatedRoute) {
@@ -51,7 +49,10 @@ export class JoinSessionComponent implements OnInit {
     const dialogRef = this.dialog.open(JoinSessionDialogComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(
-      data => this.router.navigate(['/story', this.inviteCode], { relativeTo: this.route })
+      data => this.router.navigate(['/story', this.inviteCode], {
+        relativeTo: this.route,
+        state: {author: this.model.storyOwner}
+      })
     );
   }
 
@@ -65,9 +66,11 @@ export class JoinSessionComponent implements OnInit {
       this.storyService.joinSession(this.model, this.storyId).subscribe(
         (data) => {
           this.inviteCode = data._id;
-           this.playerService.setAuthor(data.storyOwner);
           // direct to write story component on success
-          this.router.navigate(['/story', this.inviteCode], { relativeTo: this.route })
+          this.router.navigate(['/story', this.inviteCode], {
+            relativeTo: this.route,
+            state: {author: this.model.storyOwner}
+          });
         },
         (error) => {
           return console.log(error);
@@ -78,9 +81,7 @@ export class JoinSessionComponent implements OnInit {
     else {
       this.storyService.addNewStory(this.model).subscribe(
         (data) => {
-         this.inviteCode = data._id;
-          this.playerService.setAuthor(data.storyOwner);
-
+          this.inviteCode = data._id;
           this.openDialog();
           return console.log(this.inviteCode);
         },
