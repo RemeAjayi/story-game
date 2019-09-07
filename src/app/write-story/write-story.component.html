@@ -1,14 +1,21 @@
 <div class="wrapper">
-<div class="storyCard">
+  <button id="finish-btn" class="text-brand" (click)="finishStory()"><i class="fa fa-check"></i>Finish</button>
+  <div class="form-card">
+    <h3 class="text-brand">{{title}}</h3>
 <div class="message-box" >
-  <li *ngFor="let message of messages">
-   <span [className] = 'message.author == author? "sent" : "received"'>{{message.message}}</span>
-  </li>
+  <div class="flex-column" *ngFor="let message of messages">
+   <div [className] = 'message.author == author? "sent" : "received"'>
+     <span class="avatar">
+       <i [className]='message.author == author? "fa fa-hippo text-white" : "fa fa-dog text-white"'></i>
+     </span>
+     <span class="paragraph">{{message.message}}</span>
+  </div>
+</div>
 </div>
 
-    <input class="form-field pr-1" type="text" name="entry" [(ngModel)]="message">
-    <button class="button_send" type="submit" (click)="onSubmit()">Send</button>
-
+<div class="writeStoryForm">
+  <input class="form-field-2 pr-1 text-white" type="text" name="entry" [(ngModel)]="message">
+  <button class="btn-white" type="submit" (click)="onSubmit()"><i class="fa fa-paper-plane"></i></button>
 </div>
-
+  </div>
 </div>

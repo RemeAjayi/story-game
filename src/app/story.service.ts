@@ -37,7 +37,9 @@ export class StoryService {
       );
     });
   }
-
+getStoryByID(id) {
+  return this.http.get<any>(this.create_story + '/' +  id);
+}
 }
 // POST: player joins story session
 // joinStory
