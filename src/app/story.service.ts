@@ -13,10 +13,9 @@ export class StoryService {
   observable: Observable<string>;
   private socket;
 
-  // private api = 'https://sgx-api.herokuapp.com/story';
-  private create_story = 'http://localhost:3000/story';
-  private join_session = 'http://localhost:3000/story/join/';
-  private url ="http://localhost:3000";
+  private create_story = 'https://penpal-api.herokuapp.com/story';
+  private join_session = 'https://penpal-api.herokuapp.com/story/join/';
+  private url = 'https://penpal-api.herokuapp.com';
   constructor(private http: HttpClient) {
     this.socket = io(this.url);
   }
