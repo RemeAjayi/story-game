@@ -1,0 +1,16 @@
+.content
+{
+  margin: 1em;
+  padding: 1em;
+  border-radius: 10px;
+  color: #0A2B55;
+  box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
+}
+.content-body{
+  height: 300px;
+  overflow-y: scroll;
+  background-color: #0A2B55;
+  color: #ffffff;
+}

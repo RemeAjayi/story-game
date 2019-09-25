@@ -24,11 +24,7 @@
     flex-direction: column;
     justify-content: center;
 }
-.button-group
-{
-    display: flex;
-    flex-direction: row;
-}
+
 .w-50
 {
     width: 60%;

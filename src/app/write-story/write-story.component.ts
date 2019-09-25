@@ -3,6 +3,8 @@ import {Entry} from '../models/entry';
 import {NgModel} from '@angular/forms';
 import {StoryService} from '../story.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Observable} from "rxjs";
+import {map} from "rxjs/operators";
 
 @Component({
   selector: 'app-write-story',
@@ -27,10 +29,15 @@ export class WriteStoryComponent implements OnInit {
 
   ngOnInit() {
     this.storyId = this.route.snapshot.paramMap.get('id');
-    if (history.state) {
-      this.title = history.state.title;
-      this.author = history.state.author;
-    }
+    // retrieve author for this url
+    this.route.queryParams.subscribe(params => {
+        this.author = params.author;
+      });
+    // retrieve story title from backend
+    this.storyService.getStoryByID(this.storyId).subscribe((data) => {
+      this.title = data.storyTitle;
+    });
+    // retrieve messages emitted
     this.storyService.getMessages().subscribe((data) => {
       this.messages.push(data.data);
     });

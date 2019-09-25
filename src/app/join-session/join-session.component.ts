@@ -51,7 +51,7 @@ export class JoinSessionComponent implements OnInit {
     dialogRef.afterClosed().subscribe(
       data => this.router.navigate(['/story', this.inviteCode], {
         relativeTo: this.route,
-        state: {author: this.model.storyOwner, title: this.model.storyTitle}
+        queryParams: {author: this.model.storyOwner}
       })
     );
   }
@@ -69,16 +69,14 @@ export class JoinSessionComponent implements OnInit {
           // direct to write story component on success
           this.router.navigate(['/story', this.inviteCode], {
             relativeTo: this.route,
-            state: {author: this.model.storyOwner, title: this.model.storyTitle}
+            queryParams: {author: this.model.storyOwner}
           });
         },
         (error) => {
           return console.log(error);
         }
       );
-    }
-    // if user is the story owner
-    else {
+    } else {
       this.storyService.addNewStory(this.model).subscribe(
         (data) => {
           this.inviteCode = data._id;

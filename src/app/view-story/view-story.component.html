@@ -1,5 +1,23 @@
 <div class="wrapper">
-<div class="formStoryCard">
-  {{content}}
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v4.0"></script>
+  <div class="form-card">
+  <div class="card-header">
+    <h3>We're done</h3>
+    <h6>Here's your dope story</h6>
+  </div>
+  <div class="content">
+    <div class="content-header">
+      <h6>$Story Title</h6>
+      <p> By $Player1 and $Player2</p>
+    </div>
+    <div class="content-body">
+      {{content}}
+    </div>
+  </div>
+  <div class="button-group">
+    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" role="button" class="twitter-share-button button--brand w-50" data-show-count="false">Tweet</a>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" role="button" class="fb-xfbml-parse-ignore button--brand w-50">Share</a></div>  </div>
 </div>
 </div>

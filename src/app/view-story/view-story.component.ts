@@ -28,7 +28,7 @@ export class ViewStoryComponent implements OnInit {
       (data) => {
         console.log(data);
         this.story = data.content;
-        this.content = this.story.join(', ');
+        this.content = this.story.join(' ');
       },
       (error) => {
         return console.log(error);
