@@ -1,7 +1,7 @@
 .content
 {
-  margin: 1em;
-  padding: 1em;
+  margin: 0 1em 1em 1em;
+  padding: 0 1em 1em 1em;
   border-radius: 10px;
   color: #0A2B55;
   box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
@@ -10,7 +10,26 @@
 }
 .content-body{
   height: 300px;
+  padding: 0.5rem;
   overflow-y: scroll;
   background-color: #0A2B55;
   color: #ffffff;
+}
+.content-header{
+  text-align: left;
+}
+.content-header h2
+{
+  margin-bottom: 0 !important;
+}
+.w-100
+{
+  width: 100px !important;
+}
+.button-group a{
+  text-decoration: none !important;
+  margin-right: 0.5em;
+}
+.button-group{
+ margin-bottom: 1rem;
 }

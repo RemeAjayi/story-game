@@ -19,6 +19,7 @@ export class WriteStoryComponent implements OnInit {
   author: string;
   messages = [];
   message: string;
+  date = new Date();
 
   constructor(
     private storyService: StoryService,

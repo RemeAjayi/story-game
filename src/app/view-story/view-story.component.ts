@@ -11,6 +11,7 @@ export class ViewStoryComponent implements OnInit {
   storyId: string;
   content: string;
   story: string[];
+  storyTitle: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -28,6 +29,7 @@ export class ViewStoryComponent implements OnInit {
       (data) => {
         console.log(data);
         this.story = data.content;
+        this.storyTitle = data.storyTitle;
         this.content = this.story.join(' ');
       },
       (error) => {

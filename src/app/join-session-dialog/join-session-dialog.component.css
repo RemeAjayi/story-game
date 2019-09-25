@@ -5,6 +5,9 @@
     min-height: 500px;
     background-color: #fff;
 }
+.modal-body{
+  text-align: center;
+}
 .join-session, label
 {
     background-color: #0084b4;
@@ -24,7 +27,9 @@
     flex-direction: column;
     justify-content: center;
 }
-
+.button-group button{
+  margin-right: 0.5em;
+}
 .w-50
 {
     width: 60%;

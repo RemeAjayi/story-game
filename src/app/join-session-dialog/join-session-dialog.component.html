@@ -1,9 +1,9 @@
-<div class="wrapper text-brand">
+<div class="modal-body text-brand">
 <h2 mat-dialog-title></h2>
+  <img alt="picture of girl sitting on flowers" src="../../assets/img/undraw_flowers_vx06%20(1).png" height="200px">
 <p>You're almost ready to play!</p>
 <p>Share this link to invite your friends!</p>
 <mat-dialog-content>
-    <p>https:sgx-api.herokuapp.com/story/join/{{code}}</p>
     <p>localhost:5000/story/join/{{code}}</p>
     <div class="button-group">
     <button class="button--brand w-50" >Share on Twitter</button>
@@ -12,6 +12,6 @@
 </mat-dialog-content>
 
 <mat-dialog-actions>
-    <button class="mat-raised-button" (click)="close()">Close</button>
+    <button class="mat-raised-button" (click)="close()"><i class="fa fa-close"></i></button>
 </mat-dialog-actions>
 </div>

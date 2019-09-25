@@ -58,9 +58,14 @@ pr-1 {
 .avatar {
   background-color: #0084b4;
   border-radius: 50%;
-  width: 75px;
-  height: 75px;
-  padding: 0.5rem;
+  width: 125px;
+  height: 125px;
+  padding: 1rem;
+  margin: 0 0.2rem;
+}
+.message
+{
+  margin: 10px 0;
 }
 .sent
 {
@@ -90,7 +95,7 @@ pr-1 {
   border: 0;
 }
 .sent .paragraph {
-  background-color: #0A2B55;
+  background-color: #0084b4;
   color: #ffffff;
   padding: 0.5rem 0.5rem;
   margin-bottom: 2rem;
@@ -100,11 +105,13 @@ pr-1 {
 }
 .form-card-title
 {
-  height: 60px;
-  background-color: #979797;
-  color: #707070;
+  height: 120px;
 }
 .text-bold
 {
   font-weight: bold;
+}
+.w-100
+{
+  width: 100px !important;
 }
