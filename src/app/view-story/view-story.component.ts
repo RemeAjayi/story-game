@@ -13,6 +13,8 @@ export class ViewStoryComponent implements OnInit {
   story: string[];
   storyTitle: string;
   url = window.location.href;
+  player1: string;
+  player2: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -31,6 +33,8 @@ export class ViewStoryComponent implements OnInit {
         console.log(data);
         this.story = data.content;
         this.storyTitle = data.storyTitle;
+        this.player1 = data.storyOwnerName;
+        this.player2 = data.otherPlayerName;
         this.content = this.story.join(' ');
       },
       (error) => {

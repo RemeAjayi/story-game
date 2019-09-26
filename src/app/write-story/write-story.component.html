@@ -11,12 +11,18 @@
 <div class="message-box" >
   <div class="flex-column">
   <div class="message" *ngFor="let message of messages">
-   <div [className] = 'message.author == author? "sent" : "received"'>
+    <div class="sent" *ngIf="message.author == author">
      <span class="avatar">
-       <i [className]='message.author == author? "fa fa-hippo text-white" : "fa fa-dog text-white"'></i>
+       <i class="fa fa-hippo text-white"></i>
      </span>
-     <span class="paragraph">{{message.message}}</span>
-  </div>
+      <span class="paragraph">{{message.message}}</span>
+    </div>
+    <div class="received" *ngIf="message.author != author">
+      <span class="paragraph">{{message.message}}</span>
+      <span class="avatar">
+       <i class="fa fa-dog text-white"></i>
+     </span>
+    </div>
   </div>
 </div>
 </div>

@@ -24,7 +24,7 @@ export class JoinSessionComponent implements OnInit {
     private dialog: MatDialog,
     private router: Router,
     private route: ActivatedRoute) {
-    this.model = new Story('', '');
+    this.model = new Story('', '', '');
   }
 
   ngOnInit() {
