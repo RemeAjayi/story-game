@@ -2,6 +2,8 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 
+
+
 @Component({
   selector: 'app-join-session-dialog',
   templateUrl: './join-session-dialog.component.html',
@@ -10,10 +12,11 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 export class JoinSessionDialogComponent implements OnInit {
 
   code: string;
-
+  url: string;
   constructor(private dialogRef: MatDialogRef<JoinSessionDialogComponent>,
     @Inject(MAT_DIALOG_DATA) data) {
-
+    // get current url
+    this.url = window.location.href;
     this.code = data.code;
   }
 

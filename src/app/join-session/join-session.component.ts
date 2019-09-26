@@ -5,7 +5,8 @@ import {StoryService} from '../story.service';
 import {Story} from '../models/story';
 import {JoinSessionDialogComponent} from '../join-session-dialog/join-session-dialog.component';
 import {Router, ActivatedRoute} from '@angular/router';
-import {switchMap} from 'rxjs/operators';
+import {map, switchMap} from 'rxjs/operators';
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-join-session',
@@ -58,8 +59,6 @@ export class JoinSessionComponent implements OnInit {
 
 
   onSubmit() {
-    console.log('Form Has Been Submitted');
-    console.log(JSON.stringify(this.model));
     // if user navigated through invite code
     if (this.storyId) {
       // call join session method
@@ -81,7 +80,6 @@ export class JoinSessionComponent implements OnInit {
         (data) => {
           this.inviteCode = data._id;
           this.openDialog();
-          return console.log(this.inviteCode);
         },
         (error) => {
           return console.log(error);
