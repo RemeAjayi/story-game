@@ -30,6 +30,10 @@
 .button-group button{
   margin-right: 0.5em;
 }
+.button-group a{
+  text-decoration: none !important;
+  color: #fff;
+}
 .w-50
 {
     width: 60%;

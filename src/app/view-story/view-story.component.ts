@@ -12,6 +12,7 @@ export class ViewStoryComponent implements OnInit {
   content: string;
   story: string[];
   storyTitle: string;
+  url = window.location.href;
 
   constructor(
     private route: ActivatedRoute,
