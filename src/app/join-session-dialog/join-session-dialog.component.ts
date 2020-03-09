@@ -7,7 +7,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 @Component({
   selector: 'app-join-session-dialog',
   templateUrl: './join-session-dialog.component.html',
-  styleUrls: ['./join-session-dialog.component.css']
+  styleUrls: ['./join-session-dialog.component.scss']
 })
 export class JoinSessionDialogComponent implements OnInit {
 

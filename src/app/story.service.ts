@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Story } from './models/story';
 import * as io from 'socket.io-client';
+import {environment} from "../environments/environment";
 
 
 @Injectable({
@@ -13,15 +14,15 @@ export class StoryService {
   observable: Observable<string>;
   private socket;
 
-  private create_story = 'https://penpal-api.herokuapp.com/story';
-  private join_session = 'https://penpal-api.herokuapp.com/story/join/';
-  private url = 'https://penpal-api.herokuapp.com';
+  private CREATE_STORY = environment.baseUrl + '/story';
+  private join_session = environment.baseUrl + '/story/join/';
+  private url = environment.baseUrl;
   constructor(private http: HttpClient) {
     this.socket = io(this.url);
   }
 
   addNewStory(story: Story): Observable<any> {
-    return this.http.post<Story>(this.create_story, story);
+    return this.http.post<Story>(this.CREATE_STORY, story);
   }
   joinSession(story: Story, id): Observable<any> {
     return this.http.post<Story>(this.join_session + id, story);
@@ -37,7 +38,7 @@ export class StoryService {
     });
   }
 getStoryByID(id) {
-  return this.http.get<any>(this.create_story + '/' +  id);
+  return this.http.get<any>(this.CREATE_STORY + '/' +  id);
 }
 }
 // POST: player joins story session

@@ -5,7 +5,7 @@ import {StoryService} from "../story.service";
 @Component({
   selector: 'app-view-story',
   templateUrl: './view-story.component.html',
-  styleUrls: ['./view-story.component.css']
+  styleUrls: ['./view-story.component.scss']
 })
 export class ViewStoryComponent implements OnInit {
   storyId: string;

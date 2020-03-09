@@ -9,7 +9,7 @@ import {map} from "rxjs/operators";
 @Component({
   selector: 'app-write-story',
   templateUrl: './write-story.component.html',
-  styleUrls: ['./write-story.component.css']
+  styleUrls: ['./write-story.component.scss']
 })
 export class WriteStoryComponent implements OnInit {
 

@@ -1,5 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+$brand-blue: #022B69;
+$bg-green: #E8FFFE;
+$bg-blue: #E3F0FF;
+
 .wrapper
 {
   display: flex;
