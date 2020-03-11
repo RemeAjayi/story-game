@@ -1,0 +1,20 @@
+$black: #000000;
+$brand-blue: #022B69;
+
+
+.nav-link--custom{
+  color: $black !important;
+}  
+
+.nav-link-active--custom{
+    color: $brand-blue;
+}
+
+.navbar--custom{
+    background-color: transparent !important;
+}
+
+.nav-brand--custom{
+    color: $brand-blue;
+    font-weight: 600;
+}

@@ -15,6 +15,7 @@ import { ViewStoryComponent } from './view-story/view-story.component';
 import { JoinSessionDialogComponent } from './join-session-dialog/join-session-dialog.component';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { HomeComponent } from './home/home.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 @NgModule({
@@ -24,7 +25,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     WriteStoryComponent,
     ViewStoryComponent,
     JoinSessionDialogComponent,
-    HomeComponent
+    HomeComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

@@ -3,9 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { JoinSessionComponent } from './join-session/join-session.component';
 import { WriteStoryComponent } from './write-story/write-story.component';
 import { ViewStoryComponent } from './view-story/view-story.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'story/join', pathMatch:'full' },
+  { path: '', component: HomeComponent },
   { path: 'story/join', component: JoinSessionComponent },
   {
     path: 'story/join/:id', component: JoinSessionComponent,
