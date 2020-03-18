@@ -1,8 +1,162 @@
 $bg-blue: #E3F0FF;
+$easeInOutQuart: cubic-bezier(0.770, 0.000, 0.175, 1.000);
+$brand-blue: #022B69;
+
 
 #main{
     background-color: $bg-blue;
 }
 .hero-div{
-    height: 70vh;
+    height: 80vh;
+}
+
+@keyframes moving {
+    from { line-height: 2.5}
+    to   { line-height: 1.5}
+  }
+.moving-h1{
+    animation: moving 1s;
+}
+
+.moving p{
+    animation: glideUp 1.5s;
+}
+
+// stolen animations
+@keyframes spin {
+	from {
+		transform: rotate(0)
+	}
+	to {
+		transform: rotate(360deg)
+	}
+}
+
+@keyframes pulse {
+	0%,
+	100% {
+		transform: scale(1)
+	}
+	50% {
+		transform: scale(1.05)
+	}
+}
+
+@keyframes slideUp {
+	from {
+		transform: translateY(50%)
+	}
+	to {
+		transform: translateY(0)
+	}
+}
+
+@keyframes glideUp {
+	0% {
+		transform: translateY(50%);
+		opacity: 0
+	}
+	40% {
+		transform: translateY(20%);
+		opacity: 0
+	}
+	100% {
+		transform: translateY(0);
+		opacity: 1
+	}
+}
+
+@keyframes glideDown {
+	0% {
+		transform: translateY(-50%);
+		opacity: 0
+	}
+	40% {
+		transform: translateY(-20%);
+		opacity: 0
+	}
+	100% {
+		transform: translateY(0);
+		opacity: 1
+	}
+}
+
+@keyframes glideUp--sm {
+	0% {
+		transform: translateY(5%);
+		opacity: 0
+	}
+	100% {
+		transform: translateY(0);
+		opacity: 1
+	}
+}
+
+@keyframes zoom {
+	from {
+		transform: scale(0.9)
+	}
+	to {
+		transform: scale(1)
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0
+	}
+	to {
+		opacity: 1
+	}
+}
+
+@keyframes slideInLeft {
+	from {
+		transform: translateX(-20%);
+		opacity: 0
+	}
+	to {
+		transform: translateX(0);
+		opacity: 1
+	}
+}
+
+@keyframes slideInRight {
+	from {
+		transform: translateX(20%);
+		opacity: 0
+	}
+	to {
+		transform: translateX(0);
+		opacity: 1
+	}
+}
+
+.fade-out {
+	animation: fadeOut 0.35s linear forwards;
+	-webkit-animation: fadeOut 0.35s linear forwards
+}
+
+@keyframes fadeOut {
+	from {
+		opacity: 1;
+		transform: translate3d(0, -10%, 0)
+	}
+	to {
+		opacity: 0;
+		transform: translate3d(0, -30%, 0)
+	}
+}
+// forms
+#custom-input-round-md{
+    background-color: #ffffff !important;
+    border-top-left-radius: 20px  !important;
+    border-bottom-left-radius: 20px  !important;
+    height: 40px  !important;
+}
+#custom-input-round-btn-md{
+    background-color: $brand-blue;
+    color: #ffffff;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
