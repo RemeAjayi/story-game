@@ -4,6 +4,8 @@
 $brand-blue: #022B69;
 $bg-green: #E8FFFE;
 $bg-blue: #E3F0FF;
+$grey-one: #596577;
+
 
 // BUTTONS
 .button--brand
@@ -71,7 +73,7 @@ label{
 
 .text-secondary
 {
-    color: #707070;
+    color: $grey-one;
 }
 .text-white{
   color: #ffffff !important;

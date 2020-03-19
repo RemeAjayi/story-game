@@ -1,8 +1,7 @@
 $bg-blue: #E3F0FF;
 $easeInOutQuart: cubic-bezier(0.770, 0.000, 0.175, 1.000);
 $brand-blue: #022B69;
-
-
+$stepper-blue: #050A96;
 #main{
     background-color: $bg-blue;
 }
@@ -168,4 +167,67 @@ $brand-blue: #022B69;
 .section-two{
 	background-color: #ffffff;
 	height: 100vh;
+}
+// stepper
+.stepper-container {
+	width: 25%;
+  }
+  
+  .step {
+	
+	padding: 10px;
+	
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;	
+	background-color: cream;
+  }
+  
+  .v-stepper {
+	position: relative;
+  /*   visibility: visible; */
+  }
+  
+  
+  /* regular step */
+  .step .circle {
+	background-color: $stepper-blue;
+	border-radius: 100%;
+	width: 20px;    /* +6 for border */
+	height: 20px;
+	display: inline-block;
+  }
+  
+  .step .line {
+	  top: 20px;
+	left: 10px;
+  /*   height: 120px; */
+	height: 100%;
+	  
+	  position: absolute;
+	  border-left: 1px solid $stepper-blue;
+  }
+    
+  .step:last-child .line {
+	border-left: 3px solid white;
+	z-index: -1; /* behind the circle to completely hide */
+  }
+  
+  .stepper-content {
+	margin-left: 20px;
+	display: inline-block;
+  }
+  .img-fluid{
+	max-width: 100%;
+	height: auto;
+  }
+//   art
+#art-green{
+top: 400px;
+left: 450px;
+width: 445px;
+height: 443px;
+transform: matrix(0.78, 0.63, -0.63, 0.78, 0, 0);
+background: #0E908B 0% 0% no-repeat padding-box;
+opacity: 1;
 }
