@@ -2,6 +2,7 @@ $bg-blue: #E3F0FF;
 $easeInOutQuart: cubic-bezier(0.770, 0.000, 0.175, 1.000);
 $brand-blue: #022B69;
 $stepper-blue: #050A96;
+$aqua: #E8FFFE;
 #main{
     background-color: $bg-blue;
 }
@@ -223,11 +224,35 @@ $stepper-blue: #050A96;
   }
 //   art
 #art-green{
-top: 400px;
-left: 450px;
-width: 445px;
-height: 443px;
-transform: matrix(0.78, 0.63, -0.63, 0.78, 0, 0);
+width: 245px;
+height: 210px;
+clip-path: circle(31.6% at 100% 63%);
 background: #0E908B 0% 0% no-repeat padding-box;
 opacity: 1;
+position: absolute;
+top: 150vh;
+left: 83vw;
+}
+#art-blue{
+	clip-path: ellipse(47% 18% at 7% 99%);
+}
+.section-three{
+  background-color: $aqua;
+}
+.subscribe{
+	background-color: $stepper-blue;
+	border-radius: 18px;
+}
+.story-thumbnail-authors{
+	font-size: 12px !important;
+}
+.story-thumbnail-title h4{
+     margin-bottom: 0 !important;
+}
+.story-thumbnail-desc{
+	font-size: 14px;
+    width: 200px;
+    height: 265px;
+    overflow-y: hidden;
+    text-overflow: ellipsis;
 }

@@ -5,6 +5,7 @@ $brand-blue: #022B69;
 $bg-green: #E8FFFE;
 $bg-blue: #E3F0FF;
 $grey-one: #596577;
+$link-green: #0E908B;
 
 
 // BUTTONS
@@ -77,6 +78,10 @@ label{
 }
 .text-white{
   color: #ffffff !important;
+}
+.link-green{
+  color: $link-green;
+  font-size: 12px !important;
 }
 my-auto
 {
