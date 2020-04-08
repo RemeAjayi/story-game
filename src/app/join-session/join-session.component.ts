@@ -28,11 +28,11 @@ export class JoinSessionComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.storyId = this.route.snapshot.paramMap.get('id');
-    // hide story title input with this flag
-    if (this.storyId) {
-      this.storyOwner = false;
-    }
+    // this.storyId = this.route.snapshot.paramMap.get('id');
+    // // hide story title input with this flag
+    // if (this.storyId) {
+    //   this.storyOwner = false;
+    // }
   }
 
   openDialog() {

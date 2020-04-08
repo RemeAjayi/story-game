@@ -1,30 +1,60 @@
-<div class="wrapper join-session">
-    <div class="form-card justify-content-center">
-        <div class="form-header">
-            <h2 class="text-brand">Welcome!</h2>
-            <p class="text-brand">No long talk!</p>
-            <p class="text-brand">Write a Story with a friend as cool as you.</p>
-        </div>
+<!--<div class="wrapper join-session">-->
+<!--    <div class="form-card justify-content-center">-->
+<!--        <div class="form-header">-->
+<!--            <h2 class="text-brand">Welcome!</h2>-->
+<!--            <p class="text-brand">No long talk!</p>-->
+<!--            <p class="text-brand">Write a Story with a friend as cool as you.</p>-->
+<!--        </div>-->
 
-        <form #signUpForm="ngForm" (ngSubmit)="onSubmit()">
-            <div class="form-group">
-                <label>What's your name?</label>
-                <input type="text" name="playerName" id="playerName" class="form-field" [(ngModel)]="model.storyOwnerName" required>
-            </div>
-            <div class="form-group">
-                <label>What's your email?</label>
-                <input type="email" name="playerEmail" id="playerEmail" class="form-field" [(ngModel)]="model.storyOwner" required>
-            </div>
-            <div class="form-group" [hidden]="!storyOwner">
-                <label>What's the title of the story?</label>
-                <input type="text" name="title" id="title" class="form-field" [(ngModel)]="model.storyTitle">
-            </div>
+<!--        <form #signUpForm="ngForm" (ngSubmit)="onSubmit()">-->
+<!--            <div class="form-group">-->
+<!--                <label>What's your name?</label>-->
+<!--                <input type="text" name="playerName" id="playerName" class="form-field" [(ngModel)]="model.storyOwnerName" required>-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--                <label>What's your email?</label>-->
+<!--                <input type="email" name="playerEmail" id="playerEmail" class="form-field" [(ngModel)]="model.storyOwner" required>-->
+<!--            </div>-->
+<!--            <div class="form-group" [hidden]="!storyOwner">-->
+<!--                <label>What's the title of the story?</label>-->
+<!--                <input type="text" name="title" id="title" class="form-field" [(ngModel)]="model.storyTitle">-->
+<!--            </div>-->
 
-            <button type="submit" class="button--brand" id="submitButton" [disabled]="!signUpForm.valid">START SESSION</button>
-        </form>
-    </div>
-</div>
+<!--            <button type="submit" class="button&#45;&#45;brand" id="submitButton" [disabled]="!signUpForm.valid">START SESSION</button>-->
+<!--        </form>-->
+<!--    </div>-->
+<!--</div>-->
 
 <!-- name properties according to https://documenter.getpostman.com/view/6535687/S11NNHXH  -->
-
+<!--EXPORT YOUR POSTMAN COLLECTION AND PUT IN README OF BACKEND-->
 <!-- <app-modal-test></app-modal-test> -->
+
+
+<div class="container-fluid wrapper-div">
+  <div class="row h-100">
+    <div class="col-lg-6 h-100 d-flex align-items-center justify-content-center">
+      <div class="form-card-custom">
+        <div class="form-header d-flex flex-row mb-5">
+          <img src="../../assets/img/penpal-logo.PNG" width="35px" alt="logo" class="mr-2">
+          <span class="text-brand logo-text">Moments'</span></div>
+        <p class="logo-text text-brand">Complete your personal details</p>
+        <form #signUpForm="ngForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <input type="text" name="playerName" id="playerName" placeholder="Enter your password" class="form-field" [(ngModel)]="model.storyOwnerName" required>
+          </div>
+          <div class="form-group">
+            <label>What's your email?</label>
+            <input type="email" name="playerEmail" id="playerEmail" class="form-field" [(ngModel)]="model.storyOwner" required>
+          </div>
+          <div class="form-group" [hidden]="!storyOwner">
+            <label>What's the title of the story?</label>
+            <input type="text" name="title" id="title" class="form-field" [(ngModel)]="model.storyTitle">
+          </div>
+
+          <button type="submit" class="button--brand" id="submitButton" [disabled]="!signUpForm.valid">START SESSION</button>
+        </form>
+      </div>
+    </div>
+    <div class="col-lg-6 h-100"></div>
+  </div>
+</div>
