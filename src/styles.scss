@@ -59,10 +59,21 @@ label{
     display: block;
     width: 80%;
     height: 45px;
-    margin: 0 auto;
-    border: 1px solid rgba(0,0,0,0.07);
+    margin: 0 auto 1.5em auto;
+    border-radius: 4px;
+    border: 2px solid #efefef;
+    padding-left: 1em;
 }
-
+.form-field::placeholder{
+  color: #596577 !important;
+  font-size: 14px;
+  font-weight: 600;
+}
+.form-field-select{
+  color: #596577 !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+}
 .form-group
 {
     margin-bottom: 1rem;
