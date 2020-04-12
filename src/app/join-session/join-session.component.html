@@ -37,7 +37,8 @@
         <div class="form-header d-flex flex-row justify-content-center mb-5">
           <img src="../../assets/img/penpal-logo.PNG" width="35px" alt="logo" class="mr-2">
           <span class="text-brand logo-text">Moments'</span></div>
-        <h3 class="logo-text text-brand mb-5">Complete your personal details</h3>
+        <h3 class="logo-text text-brand mb-5" *ngIf="currentPage == 0">Complete your personal details</h3>
+        <h3 class="logo-text text-brand mb-5" *ngIf="currentPage == 1">Write your first story</h3>
 
         <form [formGroup]="form" id="form">
 <!--           (ngSubmit)="onSubmit()"-->
@@ -60,15 +61,22 @@
               </ng-container>
              <!--File Upload-->
               <ng-container *ngSwitchCase="'file'">
-                <input [id]="model.name" class="upload" [type]="model.type">
+                <div class="upload-file-parent w-80 mx-auto d-flex align-items-center justify-content-center">
+                  <input [id]="model.name" class="upload" [type]="model.type">
+                  <label [for]="model.name" class="upload-label mr-5">Upload your Story
+                    <img src="../../assets/img/attach.svg" alt="attach-file-icon">
+                  </label>
+                </div>
               </ng-container>
              <!--Checkbox Group-->
               <ng-container *ngSwitchCase="'checkbox-group'">
-                <div class="row">
-                    <div class="col-3" *ngFor="let option of model.options; let i = index">
+                <div class="row no-gutter my-3 w-80 mx-auto">
+                    <div class="col-4 col-md-3 checkbox-pill" *ngFor="let option of model.options; let i = index">
                     <input class="form-check-input" type="checkbox" [id]="option.label" [formControlName]="i"
                            [name]="option.label" [value]="option.value">
-                    <label>{{option.label}}</label>
+                    <label [for]="option.label" class="checkbox-label">
+                      {{option.label}}
+                    </label>
                   </div>
                 </div>
               </ng-container>
@@ -78,7 +86,7 @@
             <button *ngIf="currentPage == 0" type="submit" class="button--brand w-100" id="createAcctBtn" [disabled]="!form.valid" (click)="next()">Create your account</button>
           </div>
           <div class="w-80 mx-auto">
-            <button *ngIf="currentPage == 1" type="submit" class="button--brand w-100" id="submitButton" [disabled]="!form.valid">Write Your First Story</button>
+            <button *ngIf="currentPage == 1" type="submit" class="button--brand w-100" id="submitButton" [disabled]="!form.valid">Begin your story</button>
           </div>
         </form>
       </div>

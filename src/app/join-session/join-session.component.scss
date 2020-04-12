@@ -29,3 +29,37 @@
 .w-80{
   width: 80%;
 }
+.upload{
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+.upload-label{
+  color: #0E908B;
+  cursor: hand;
+}
+.upload-file-parent{
+  border: 2px solid #0E908B;
+  border-radius: 4px;
+  height: 45px;
+}
+.upload + .upload-label{
+  cursor: hand;
+}
+input[type=checkbox] {
+ width: 0;
+  height: 0;
+}
+.checkbox-pill{
+  padding: 0 2px !important;
+}
+.checkbox-label{
+  color: #022B69;
+  border: 2px solid #efefef;
+  width: 100%;
+  padding: 5px 5px;
+  border-radius: 4px;
+}
