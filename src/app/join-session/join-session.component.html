@@ -72,10 +72,10 @@
               <ng-container *ngSwitchCase="'checkbox-group'">
                 <div class="row no-gutter my-3 w-80 mx-auto">
                     <div class="col-4 col-md-3 checkbox-pill" *ngFor="let option of model.options; let i = index">
-                    <input class="form-check-input" type="checkbox" [id]="option.label" [formControlName]="i"
-                           [name]="option.label" [value]="option.value">
-                    <label [for]="option.label" class="checkbox-label">
-                      {{option.label}}
+                    <label [for]="option.label" [className]=" option.checked ? 'checkbox-label checked': 'checkbox-label'">
+                      <i class="fas fa-times" *ngIf="option.checked"></i>{{option.label}}
+                      <input type="checkbox" [id]="option.label" [formControlName]="i"
+                             [name]="option.label" [value]="option.value" (change)="toggleCheckedClass(option)">
                     </label>
                   </div>
                 </div>

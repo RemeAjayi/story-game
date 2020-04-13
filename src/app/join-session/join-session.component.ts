@@ -80,7 +80,9 @@ export class JoinSessionComponent implements OnInit {
   getCurrentPage() {
     return this.currentPageSubject.asObservable();
   }
-
+  toggleCheckedClass(obj) {
+    obj.checked = !obj.checked;
+  }
   // openDialog() {
   //
   //   const dialogConfig = new MatDialogConfig();
