@@ -24,6 +24,7 @@ export class JoinSessionComponent implements OnInit {
   currentPage = 0 ;
   currentPageSubject = new BehaviorSubject<number>(0);
   formValues = [];
+  isSubmitted: boolean;
 
   constructor(
     private storyService: StoryService,
@@ -116,6 +117,7 @@ export class JoinSessionComponent implements OnInit {
   onSubmit() {
     this.saveFormValues('two');
     console.log(this.formValues);
+    this.isSubmitted = true;
     // if user navigated through invite code
     // if (this.storyId) {
     //   // call join session method

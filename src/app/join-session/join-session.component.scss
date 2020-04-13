@@ -68,3 +68,13 @@ input[type=checkbox] {
   padding: 5px 5px;
   border-radius: 4px;
 }
+.secondary-image{
+  transform: translate(40%, 35%);
+  height: 170px;
+}
+.primary-image{
+  z-index: 20;
+}
+.copy{
+  overflow-y: hidden;
+}
