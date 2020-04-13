@@ -23,6 +23,7 @@ export class JoinSessionComponent implements OnInit {
   formConfig = Config.CONTROLS;
   currentPage = 0 ;
   currentPageSubject = new BehaviorSubject<number>(0);
+  formValues = [];
 
   constructor(
     private storyService: StoryService,
@@ -69,6 +70,7 @@ export class JoinSessionComponent implements OnInit {
   }
   // go to next page
   next() {
+    this.saveFormValues('one');
     this.setCurrentPage(this.currentPage + 1);
   }
 
@@ -106,35 +108,42 @@ export class JoinSessionComponent implements OnInit {
   // }
   //
   //
-  // onSubmit() {
-  //   // if user navigated through invite code
-  //   if (this.storyId) {
-  //     // call join session method
-  //     this.storyService.joinSession(this.model, this.storyId).subscribe(
-  //       (data) => {
-  //         this.inviteCode = data._id;
-  //         // direct to write story component on success
-  //         this.router.navigate(['/story', this.inviteCode], {
-  //           relativeTo: this.route,
-  //           queryParams: {author: this.model.storyOwner}
-  //         });
-  //       },
-  //       (error) => {
-  //         return console.log(error);
-  //       }
-  //     );
-  //   } else {
-  //     this.storyService.addNewStory(this.model).subscribe(
-  //       (data) => {
-  //         this.inviteCode = data._id;
-  //         this.openDialog();
-  //       },
-  //       (error) => {
-  //         return console.log(error);
-  //       }
-  //     );
-  //   }
-  // }
+  saveFormValues(page) {
+    if (this.form.valid) {
+      this.formValues.push({page, formData: this.form.getRawValue()});
+    }
+  }
+  onSubmit() {
+    this.saveFormValues('two');
+    console.log(this.formValues);
+    // if user navigated through invite code
+    // if (this.storyId) {
+    //   // call join session method
+    //   this.storyService.joinSession(this.model, this.storyId).subscribe(
+    //     (data) => {
+    //       this.inviteCode = data._id;
+    //       // direct to write story component on success
+    //       this.router.navigate(['/story', this.inviteCode], {
+    //         relativeTo: this.route,
+    //         queryParams: {author: this.model.storyOwner}
+    //       });
+    //     },
+    //     (error) => {
+    //       return console.log(error);
+    //     }
+    //   );
+    // } else {
+    //   this.storyService.addNewStory(this.model).subscribe(
+    //     (data) => {
+    //       this.inviteCode = data._id;
+    //       this.openDialog();
+    //     },
+    //     (error) => {
+    //       return console.log(error);
+    //     }
+    //   );
+    // }
+  }
 
 
 }

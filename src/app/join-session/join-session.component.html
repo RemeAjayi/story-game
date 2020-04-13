@@ -40,9 +40,7 @@
         <h3 class="logo-text text-brand mb-5" *ngIf="currentPage == 0">Complete your personal details</h3>
         <h3 class="logo-text text-brand mb-5" *ngIf="currentPage == 1">Write your first story</h3>
 
-        <form [formGroup]="form" id="form">
-<!--           (ngSubmit)="onSubmit()"-->
-
+        <form [formGroup]="form" id="form" (ngSubmit)="onSubmit()">
           <ng-container *ngFor="let model of formConfig[currentPage].controls">
             <div [ngSwitch]="model.type">
               <!-- Default input type (Number, Text field) -->
@@ -70,7 +68,7 @@
               </ng-container>
              <!--Checkbox Group-->
               <ng-container *ngSwitchCase="'checkbox-group'">
-                <div class="row no-gutter my-3 w-80 mx-auto">
+                <div class="row no-gutter my-3 w-80 mx-auto" [formArrayName]="model.name">
                     <div class="col-4 col-md-3 checkbox-pill" *ngFor="let option of model.options; let i = index">
                     <label [for]="option.label" [className]=" option.checked ? 'checkbox-label checked': 'checkbox-label'">
                       <i class="fas fa-times" *ngIf="option.checked"></i>{{option.label}}

@@ -53,16 +53,17 @@ input[type=checkbox] {
  width: 0.1px;
   height: 0.1px;
 }
-input:checked + checkbox-label, .checked {
+.checked {
   background-color:#050A96 !important;
   color: #ffffff !important;
+  border: 0;
 }
 .checkbox-pill{
   padding: 0 2px !important;
 }
 .checkbox-label{
   color: #022B69;
-  border: 2px solid #efefef;
+  border: 1px solid #efefef;
   width: 100%;
   padding: 5px 5px;
   border-radius: 4px;
