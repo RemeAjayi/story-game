@@ -34,12 +34,12 @@
   <div class="row h-100">
     <div class="col-lg-6 h-100 d-flex align-items-center justify-content-center">
       <div class="form-card-custom text-center w-lg-75 w-100">
-        <div class="form-header d-flex flex-row justify-content-center mb-5">
+        <div class="form-header d-flex flex-row justify-content-center">
           <img src="../../assets/img/penpal-logo.PNG" width="35px" alt="logo" class="mr-2">
           <span class="text-brand logo-text">Moments'</span></div>
         <ng-container *ngIf="!isSubmitted">
-          <h3 class="logo-text text-brand mb-5" *ngIf="currentPage == 0">Complete your personal details</h3>
-          <h3 class="logo-text text-brand mb-5" *ngIf="currentPage == 1">Write your first story</h3>
+          <h3 class="logo-text text-brand my-5" *ngIf="currentPage == 0">Complete your personal details</h3>
+          <h3 class="logo-text text-brand my-5" *ngIf="currentPage == 1">Write your first story</h3>
 
           <form [formGroup]="form" id="form" (ngSubmit)="onSubmit()">
             <ng-container *ngFor="let model of formConfig[currentPage].controls">
@@ -95,7 +95,7 @@
             <img src="../../assets/img/Group%203044.png" alt="girls laughing" class="primary-image">
           </div>
           <h3 class="logo-text text-brand mb-3">Invite a friend to join you in writing</h3>
-          <div class="copy-section w-80 mx-auto">
+          <div class="copy-section mx-auto">
             <textarea readonly="readonly" class="form-field-textarea copy">
 Hi, I just started this short story on moments, will you like to join me in writing. Please click on this link to join http://www.moments.com/jide_sanwoolu/stories/share_219273733484744
             </textarea>
