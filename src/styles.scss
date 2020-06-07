@@ -6,8 +6,50 @@ $bg-green: #E8FFFE;
 $bg-blue: #E3F0FF;
 $grey-one: #596577;
 $link-green: #0E908B;
+$text-secondary: #333333;
+$muted-grey: #8B8B8B;
+$success-green: #0E908B;
 
+body{
+  font-size: 10px !important;
+  font-family: 'Montserrat', sans-serif;
+  margin: 0 !important;
+}
 
+// TYPOGRAPHTY
+.primary-text{
+  color: $brand-blue;
+}
+//.main-text{
+//  color: $primary-color;
+//}
+.secondary-text{
+  color: $text-secondary;
+}
+.link-text{
+  color: $link-green;
+}
+.muted-text{
+  color: $muted-grey;
+}
+.medium-text{
+  font-size: 1.7rem;
+}
+
+.small-text{
+  font-size: 1.4rem;
+}
+
+.xsmall-text{
+  font-size: 1.2rem;
+}
+
+.xxsmall-text{
+  font-size: 1rem;
+}
+.sub-text{
+  font-size: 0.8rem;
+}
 // BUTTONS
 .button--brand
 {
@@ -15,9 +57,25 @@ $link-green: #0E908B;
     color: #ffffff;
     padding: 5px 12px;
     border-radius: 3px;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     border: 0.5px solid #C7B6D19D;
 
+}
+
+.button{
+  font-size: 1rem;
+  padding: 5px 12px;
+  border-radius: 3px;
+  border: 0.5px solid #C7B6D19D;
+  &--brand{
+    background-color: $brand-blue;
+    color: #ffffff;
+  }
+  &--success{
+    background-color: transparent;
+    border: 1px solid $success-green;
+    color: $success-green;
+  }
 }
 .wrapper
 {
@@ -27,10 +85,7 @@ $link-green: #0E908B;
   align-content: center;
   height: 100vh;
 }
-body{
-    font-family: 'Inter', sans-serif;
-    margin: 0 !important;
-}
+
 .form-card{
   margin: 0 auto;
   display: flex;

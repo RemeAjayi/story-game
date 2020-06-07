@@ -34,6 +34,13 @@ export class JoinSessionComponent implements OnInit {
     this.model = new Story('', '', '');
   }
 
+  /* keep the approach of making people supply names and email when they are invited.
+    after they view they're story, if they don't have an account prompt them to a modal saying
+    they should create a profile, to create their own stories or view others.
+    Then it should take them to a profile page(v3) where they can finish up or move them to the register process
+    with their details prepopulated(v2) - or not(v1).
+  */
+
   ngOnInit() {
     // create form
     this.getCurrentPage().subscribe((result) => {

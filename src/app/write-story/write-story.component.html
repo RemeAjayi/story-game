@@ -1,35 +1,115 @@
-<div class="wrapper">
-  <div class="form-card">
-    <div class="form-card-title">
-      <div class="row">
-        <div class="col-90"><h3 class="text-brand text-bold">{{title}}</h3>
-          <p class="text-brand">{{this.date | date:'MMM d y'}}</p></div>
-        <div class="d-flex align-items-center col-10">  <button  class="my-auto" id="finish-btn" (click)="finishStory()"><i class="fa fa-check"></i></button>
-        </div>
+<!--<div class="wrapper">-->
+<!--  <div class="form-card">-->
+<!--    <div class="form-card-title">-->
+<!--      <div class="row">-->
+<!--        <div class="col-90"><h3 class="text-brand text-bold">{{title}}</h3>-->
+<!--          <p class="text-brand">{{this.date | date:'MMM d y'}}</p></div>-->
+<!--        <div class="d-flex align-items-center col-10">  <button  class="my-auto" id="finish-btn" (click)="finishStory()"><i class="fa fa-check"></i></button>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--<div class="paragraph-box" >-->
+<!--  <div class="flex-column">-->
+<!--  <div class="paragraph" *ngFor="let paragraph of paragraphs">-->
+<!--    <div class="sent" *ngIf="paragraph.author == author">-->
+<!--     <span class="avatar">-->
+<!--       <i class="fa fa-hippo text-white"></i>-->
+<!--     </span>-->
+<!--      <span class="paragraph">{{paragraph.paragraph}}</span>-->
+<!--    </div>-->
+<!--    <div class="received" *ngIf="paragraph.author != author">-->
+<!--      <span class="paragraph">{{paragraph.paragraph}}</span>-->
+<!--      <span class="avatar">-->
+<!--       <i class="fa fa-dog text-white"></i>-->
+<!--     </span>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--<div class="writeStoryForm">-->
+<!--  <input class="form-field-2 pr-1 text-white" type="text" name="entry" [(ngModel)]="paragraph">-->
+<!--  <button class="btn-white" type="submit" (click)="onSubmit()"><i class="fa fa-paper-plane"></i></button>-->
+<!--</div>-->
+<!--  </div>-->
+<!--</div>-->
+<app-navbar></app-navbar>
+<div class="container-fluid mt-5">
+<div class="story__box container">
+  <section class="stories" *ngIf="storyListVisible">
+    <div class="story__search header d-flex flex-row align-items-center">
+      <div class="input-group position-relative">
+        <input type="text" class="custom-input-round-md form-control" placeholder="Find Stories">
+        <span class="search-icon position-absolute"><img src="../../assets/img/search%20(2).svg" height="12px"> </span>
       </div>
     </div>
-<div class="message-box" >
-  <div class="flex-column">
-  <div class="message" *ngFor="let message of messages">
-    <div class="sent" *ngIf="message.author == author">
-     <span class="avatar">
-       <i class="fa fa-hippo text-white"></i>
-     </span>
-      <span class="paragraph">{{message.message}}</span>
-    </div>
-    <div class="received" *ngIf="message.author != author">
-      <span class="paragraph">{{message.message}}</span>
-      <span class="avatar">
-       <i class="fa fa-dog text-white"></i>
-     </span>
-    </div>
-  </div>
+    <section class="story__scrollable">
+      <ul class="story__list">
+        <li (click)="showStoryContent()" class="story">
+          <section class="story__image p-1">
+            <img src="../../assets/img/earth-2.png" class="rounded img">
+          </section>
+          <section class="story__info pl-4 pl-md-1">
+            <p><span class="story__name font-weight-bold sub-text text-secondary">Emily Smith</span><br>
+              <span class="story__paragraph sub-text muted-text">This paragraph is about cats and pizza.  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></p>
+          </section>
+        </li>
+        <li (click)="showStoryContent()" class="story">
+          <section class="story__image p-1">
+            <img src="../../assets/img/aven.png" class="rounded img">
+          </section>
+          <section class="story__info pl-4 pl-md-1">
+            <p><span class="story__name font-weight-bold sub-text text-secondary">Emily Smith</span><br>
+              <span class="story__paragraph sub-text muted-text">This paragraph is about cats and pizza.  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></p>
+          </section>
+        </li>
+  </ul>
+  </section>
+  </section>
+  <section class="paragraphs" #paragraphs>
+      <section class="story__actions header d-flex flex-row align-items-center justify-content-between">
+        <div class="story-action exit-paragraphs d-inline d-md-none" (click)="showStoryList()" id="backBtn">
+          <i class="fas fa-arrow-left"></i>
+        </div>
+        <div class="story-action story__current--info">
+          <p class="m-0 p-0"><span class="story-title secondary-text font-weight-bold xxsmall-text">Let our love lead us right</span><br>
+            <span class="sub-text muted-text authors"> You and <span class="link-text">Tolani Olowokere</span> are contributors</span></p>
+        </div>
+        <div class="story-action save">
+         <button class="button button--success">Draft <i class="fas fa-caret-down"></i></button>
+        </div>
+        <div class="story-action story-action__options">
+          <i class="fas fa-ellipsis-h"></i>
+        </div>
+      </section>
+    <section class="paragraphs__scrollable">
+      <ul class="paragraphs__list">
+        <li class="paragraph paragraph__sent">
+          <div class="paragraph__container">
+            <p class="paragraph__text">
+              Greetings!
+            </p>
+            <span class="paragraph__time">10:54 PM</span>
+          </div>
+        </li>
+        <li class="paragraph paragraph__received">
+          <div class="paragraph__image">
+            <i class="fas fa-user-circle fa-2x"></i>
+          </div>
+          <div class="paragraph__container">
+            <p class="paragraph__text">
+              Howdy.
+            </p>
+            <span class="paragraph__time">9:54 PM</span>
+          </div>
+        </li>
+      </ul>
+    </section>
+    <form class="paragraphs__send">
+      <i class="paragraphs__send-attachment fas fa-paperclip fa-2x"></i>
+      <input name="paragraph_text" type="text" placeholder="Type here..." />
+      <button class="paragraphs__send-button" type="submit">Send</button>
+    </form>
+  </section>
 </div>
-</div>
-
-<div class="writeStoryForm">
-  <input class="form-field-2 pr-1 text-white" type="text" name="entry" [(ngModel)]="message">
-  <button class="btn-white" type="submit" (click)="onSubmit()"><i class="fa fa-paper-plane"></i></button>
-</div>
-  </div>
 </div>

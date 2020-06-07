@@ -12,6 +12,8 @@ const routes: Routes = [
     path: 'story/join/:id', component: JoinSessionComponent,
   },
   { path: 'story/:id', component: WriteStoryComponent },
+
+  { path: 'story', component: WriteStoryComponent },
   { path: 'story/:id/view', component: ViewStoryComponent }
 ];
 
