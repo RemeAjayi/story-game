@@ -84,31 +84,33 @@
       </section>
     <section class="paragraphs__scrollable">
       <ul class="paragraphs__list">
-        <li class="paragraph paragraph__sent">
+        <li class="paragraph paragraph__sent my-2">
           <div class="paragraph__container">
-            <p class="paragraph__text">
+            <p class="paragraph__text sub-text m-0">
               Greetings!
             </p>
-            <span class="paragraph__time">10:54 PM</span>
+          </div>
+          <div class="paragraph__image mx-3">
+            <img class="rounded-circle" src="../../assets/img/atica.png">
+            <div class="paragraph__time muted-text">10:54 PM</div>
           </div>
         </li>
-        <li class="paragraph paragraph__received">
-          <div class="paragraph__image">
-            <i class="fas fa-user-circle fa-2x"></i>
+        <li class="paragraph paragraph__received my-2">
+          <div class="paragraph__image mx-3">
+            <img class="rounded-circle" src="../../assets/img/muszica.png">
+            <div class="paragraph__time muted-text">9:54 PM</div>
           </div>
           <div class="paragraph__container">
-            <p class="paragraph__text">
+            <p class="paragraph__text sub-text m-0">
               Howdy.
             </p>
-            <span class="paragraph__time">9:54 PM</span>
           </div>
         </li>
       </ul>
     </section>
     <form class="paragraphs__send">
-      <i class="paragraphs__send-attachment fas fa-paperclip fa-2x"></i>
-      <input name="paragraph_text" type="text" placeholder="Type here..." />
-      <button class="paragraphs__send-button" type="submit">Send</button>
+      <input name="paragraph_text" class="paragraphs__send-input" type="text" placeholder="Type here..." />
+      <button class="paragraphs__send-button" type="submit"><i class="fa fa-paper-plane"></i></button>
     </form>
   </section>
 </div>

@@ -74,7 +74,7 @@ export class WriteStoryComponent implements OnInit {
    if (this.isVisible) {
        this.storyListVisible = false;
     // set display of paragraph to block
-     this.renderer.setStyle(this.paragraphs.nativeElement, 'display', 'block');
+       this.renderer.setStyle(this.paragraphs.nativeElement, 'display', 'block');
    }
 
 

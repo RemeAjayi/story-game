@@ -1,0 +1,73 @@
+@import 'src/styles/abstracts/variables';
+
+.hero-div{
+  background-color: $green;
+}
+#main{
+  padding-left: 0;
+  padding-right: 0;
+}
+.search{
+  max-width: 600px;
+}
+#searchStories{
+  width: 100%;
+  outline: none;
+  border-color: transparent;
+  border-radius: 4px;
+  height: 45px;
+}
+//footer
+#art-blue{
+  width: 245px;
+  height: 70px;
+  clip-path: ellipse(45% 100% at 0% 100%);
+  background: #050A96 0% 0% no-repeat padding-box;
+  position: relative;
+  left: -15px;
+}
+.section-three{
+  background-color: $aqua;
+}
+.subscribe{
+  background-color: $stepper-blue;
+  border-radius: 18px;
+}
+// forms
+.custom-input-round-md{
+  background-color: #ffffff !important;
+  border-radius: 40px  !important;
+  height: 50px  !important;
+  font-size: 12px;
+}
+.custom-input-round-btn-md{
+  background-color: $brand-blue !important;
+  font-size: 12px !important;
+  color: #ffffff !important;
+  border-radius: 40px !important;
+  margin-left: -125px !important;
+  width: 120px !important;
+  z-index: 20000 !important;
+  margin-top: 0.3em !important;
+  margin-bottom: 0.3em !important;
+}
+@media only screen and (max-width: 500px) {
+  .custom-input-round-btn-md {
+    display: block;
+    width: 100%;
+  }
+}
+.custom-input-round-md::-webkit-input-placeholder { /* Edge */
+  color: #022B695C !important;
+  font-weight: 500 !important;
+}
+
+.custom-input-round-md:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #022B695C !important;
+  font-weight: 500 !important;
+}
+
+.custom-input-round-md::placeholder {
+  color: #022B695C !important;
+  font-weight: 500 !important;
+}

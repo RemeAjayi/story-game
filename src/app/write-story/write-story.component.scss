@@ -170,7 +170,6 @@ section {
 }
 
 input[type="text"] {
-  font-family: BioRhyme, Lucida Console, serif;
   font-size: 16px;
   color: #2d3c49;
 }
@@ -304,10 +303,12 @@ input[type="text"] {
 // paragraphs
 .paragraphs{
   display: none;
+  border-right: 1px solid #DEDEDE;
+  border-bottom: 1px solid #DEDEDE;
 }
 
-.paragraph__scrollable {
-  min-height: 100%;
+.paragraphs__scrollable {
+  min-height: calc(100% - 130px);
   overflow-y: auto;
 }
 .paragraphs__list {
@@ -325,7 +326,6 @@ input[type="text"] {
 }
 
 .paragraph__container {
-  border: 1px solid gray;
   border-radius: 5px;
   padding: 0 5px;
   display: flex;
@@ -335,6 +335,10 @@ input[type="text"] {
 .paragraph__image {
   padding-right: 5px;
   align-self: center;
+}
+
+.paragraph__image img{
+  height: 35px;
 }
 
 .paragraph__read::before {
@@ -349,11 +353,19 @@ input[type="text"] {
 }
 
 .paragraph__sent .paragraph__container {
-  background-color: #f0f0f0;
+  background-color: #022B69;
+  color: #ffffff;
+  padding: 0.5rem;
 }
 
 .paragraph__received {
   align-self: flex-start;
+}
+
+.paragraph__received .paragraph__container {
+  background-color: #F0F0F0;
+  color: #333333;
+  padding: 0.5rem;
 }
 
 .paragraph__time {
@@ -373,25 +385,37 @@ input[type="text"] {
   cursor: pointer;
 }
 
-.paragraphs__send input[name="paragraph_text"]{
-  height: 30px;
-  width: 70%;
-  padding: 0 5px;
-}
-
 .paragraphs__send-button {
   color: white;
-  background-color: #f442bc;
-  border-radius: 5px;
-  border: 1px solid #f442bc;
+  background-color: #022B69;
+  border: 0;
   cursor: pointer;
-  font-family: BioRhyme, Lucida Console, serif;
-  font-size: 16px;
+  font-size: 24px;
   transition: 200ms;
+  height: 100%;
+  width:10%;
+  margin-left: auto;
 }
 .paragraphs__send-button:hover {
   border-color: black;
 }
 .exit-paragraphs {
   display:inline;
+}
+.paragraphs__send{
+  border-top: 1px solid #DEDEDE;
+  height: 50px;
+  padding-right: 0;
+}
+.paragraphs__send-input{
+  border-color: transparent !important;
+  height: 100% !important;
+  width: 90%;
+  outline: transparent;
+  display: flex;
+  align-content: center;
+}
+.paragraphs__send-input::placeholder{
+  color: #8B8B8B !important;
+  opacity: 0.7 !important;
 }

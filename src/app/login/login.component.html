@@ -1,35 +1,3 @@
-<!--<div class="wrapper join-session">-->
-<!--    <div class="form-card justify-content-center">-->
-<!--        <div class="form-header">-->
-<!--            <h2 class="text-brand">Welcome!</h2>-->
-<!--            <p class="text-brand">No long talk!</p>-->
-<!--            <p class="text-brand">Write a Story with a friend as cool as you.</p>-->
-<!--        </div>-->
-
-<!--        <form #signUpForm="ngForm" (ngSubmit)="onSubmit()">-->
-<!--            <div class="form-group">-->
-<!--                <label>What's your name?</label>-->
-<!--                <input type="text" name="playerName" id="playerName" class="form-field" [(ngModel)]="model.storyOwnerName" required>-->
-<!--            </div>-->
-<!--            <div class="form-group">-->
-<!--                <label>What's your email?</label>-->
-<!--                <input type="email" name="playerEmail" id="playerEmail" class="form-field" [(ngModel)]="model.storyOwner" required>-->
-<!--            </div>-->
-<!--            <div class="form-group" [hidden]="!storyOwner">-->
-<!--                <label>What's the title of the story?</label>-->
-<!--                <input type="text" name="title" id="title" class="form-field" [(ngModel)]="model.storyTitle">-->
-<!--            </div>-->
-
-<!--            <button type="submit" class="button&#45;&#45;brand" id="submitButton" [disabled]="!signUpForm.valid">START SESSION</button>-->
-<!--        </form>-->
-<!--    </div>-->
-<!--</div>-->
-
-<!-- name properties according to https://documenter.getpostman.com/view/6535687/S11NNHXH  -->
-<!--EXPORT YOUR POSTMAN COLLECTION AND PUT IN README OF BACKEND-->
-<!-- <app-modal-test></app-modal-test> -->
-
-
 <div class="container-fluid wrapper-div">
   <div class="row h-100">
     <div class="col-lg-6 h-100 d-flex align-items-center justify-content-center">
@@ -37,9 +5,8 @@
         <div class="form-header d-flex flex-row justify-content-center">
           <img src="../../assets/img/penpal-logo.PNG" width="35px" alt="logo" class="mr-2">
           <span class="text-brand logo-text">Moments'</span></div>
-        <ng-container *ngIf="!isSubmitted">
-          <h3 class="logo-text text-brand my-5" *ngIf="currentPage == 0">Complete your personal details</h3>
-          <h3 class="logo-text text-brand my-5" *ngIf="currentPage == 1">Write your first story</h3>
+        <ng-container >
+          <h3 class="logo-text text-brand my-5">Welcome Back! </h3>
 
           <form [formGroup]="form" id="form" (ngSubmit)="onSubmit()">
             <ng-container *ngFor="let model of formConfig[currentPage].controls">
@@ -72,7 +39,7 @@
                   <div class="row no-gutter my-3 w-80 mx-auto" [formArrayName]="model.name">
                     <div class="col-4 col-md-3 checkbox-pill" *ngFor="let option of model.options; let i = index">
                       <label [for]="option.label" [className]=" option.checked ? 'checkbox-label checked': 'checkbox-label'">
-                        <i class="pr-1 fas fa-times" *ngIf="option.checked"></i>{{option.label}}
+                        <i class="fas fa-times" *ngIf="option.checked"></i>{{option.label}}
                         <input type="checkbox" [id]="option.label" [formControlName]="i"
                                [name]="option.label" [value]="option.value" (change)="toggleCheckedClass(option)">
                       </label>
@@ -88,26 +55,6 @@
               <button *ngIf="currentPage == 1" type="submit" class="button--brand w-100" id="submitButton" [disabled]="!form.valid">Begin your story</button>
             </div>
           </form>
-        </ng-container>
-        <ng-container *ngIf="isSubmitted">
-          <div class="d-flex flex-row justify-content-center">
-            <img src="../../assets/img/Group%203045.png" alt="girls laughing" class="secondary-image">
-            <img src="../../assets/img/Group%203044.png" alt="girls laughing" class="primary-image">
-          </div>
-          <h3 class="logo-text text-brand mb-3">Invite a friend to join you in writing</h3>
-          <div class="copy-section mx-auto">
-            <textarea readonly="readonly" class="form-field-textarea copy">
-Hi, I just started this short story on moments, will you like to join me in writing. Please click on this link to join http://www.moments.com/jide_sanwoolu/stories/share_219273733484744
-            </textarea>
-            <div class="copy-section-footer d-flex justify-content-between w-80 mx-auto">
-              <button class="button--brand">Copy link</button>
-              <div class="to-the-right">
-                <span class="mr-2">Copy link</span>
-                <img src="../../assets/img/facebook.svg" class="mr-2">
-                <img src="../../assets/img/twitter.svg">
-              </div>
-            </div>
-          </div>
         </ng-container>
       </div>
     </div>

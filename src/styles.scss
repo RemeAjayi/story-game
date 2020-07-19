@@ -11,7 +11,7 @@ $muted-grey: #8B8B8B;
 $success-green: #0E908B;
 
 body{
-  font-size: 10px !important;
+  //font-size: 10px !important;
   font-family: 'Montserrat', sans-serif;
   margin: 0 !important;
 }
@@ -187,4 +187,40 @@ my-auto
 .d-flex
 {
   display: flex;
+}
+
+//checkbox pills
+.checkbox-pill input{
+  width: 0.1px;
+  height: 0.1px;
+}
+.checked {
+  background-color:#050A96 !important;
+  color: #ffffff !important;
+  border: 0;
+}
+.checkbox-pill{
+  padding: 0 2px !important;
+}
+.checkbox-label{
+  color: #022B69;
+  border: 1px solid #efefef;
+  width: 100%;
+  padding: 5px 5px;
+  border-radius: 4px;
+  background-color: #ffffff;
+}
+//STORY THUMBNAIL
+.story-thumbnail-authors{
+  font-size: 12px !important;
+}
+.story-thumbnail-title h4{
+  margin-bottom: 0 !important;
+}
+.story-thumbnail-desc{
+  font-size: 14px;
+  width: 250px;
+  height: 250px;
+  overflow-y: hidden;
+  text-overflow: ellipsis;
 }
