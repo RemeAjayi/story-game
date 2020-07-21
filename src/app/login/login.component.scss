@@ -1,0 +1,24 @@
+.wrapper-div{
+  height: 100vh;
+}
+@media only screen and (min-width: 769px){
+  .wrapper-div{
+    background-image: url('../../assets/img/Mask Group 4.png');
+    background-position: right;
+    background-repeat:no-repeat;
+    background-size: 50% 100%;
+  }
+  .w-lg-75{
+    width: 75% !important;
+  }
+}
+.logo-text{
+  font-size: 18px;
+  font-weight: 600;
+}
+.form-card-custom{
+  height: 500px;
+}
+.w-80{
+  width: 80%;
+}
