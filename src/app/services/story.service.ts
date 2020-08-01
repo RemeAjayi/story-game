@@ -1,15 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
-import { Story } from './models/story';
+import { HttpClient} from '@angular/common/http';
+import { Observable} from 'rxjs';
+import { Story } from '../models/story';
 import * as io from 'socket.io-client';
-import {environment} from "../environments/environment";
+import {environment} from "../../environments/environment";
 
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class StoryService {
   observable: Observable<string>;
   private socket;

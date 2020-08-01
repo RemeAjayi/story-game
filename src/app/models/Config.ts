@@ -19,12 +19,13 @@ export class Config {
   public static CONTROLS = [
     {
       controls: [
-        {name: 'password', type: 'password', validations: {}, errors: {}, placeholder: 'Enter Your Password'},
-        {name: 'fullName', type: 'text', validations: {}, errors: {}, placeholder: 'Full Name *'},
+        {name: 'password', type: 'password', required:true, validations: {}, errors: {}, placeholder: 'Enter Your Password'},
+        {name: 'playerName', type: 'text', required:true, validations: {}, errors: {}, placeholder: 'Full Name *'},
         {
           name: 'countryCode',
           type: 'select',
           options: Config.COUNTRY_LIST,
+          required:true,
           validations: {},
           errors: {},
           placeholder: 'Country'
@@ -32,6 +33,7 @@ export class Config {
         {
           name: 'phone',
           type: 'phone',
+          required:true,
           validations: {
             pattern: /^[0-9]{5,20}$/
           },
@@ -42,7 +44,7 @@ export class Config {
         }]
     },
    { controls: [
-        {name: 'title', type: 'text', validations: {}, errors: {}, placeholder: 'Title'},
+        {name: 'title', type: 'text', required:true, validations: {}, errors: {}, placeholder: 'Title'},
         {name: 'storyImage',
           type: 'file',
           validations: {},
@@ -52,6 +54,7 @@ export class Config {
         {name: 'category',
           type: 'checkbox-group',
           options: Config.CATEGORY_LIST,
+          required:true,
           validations: {},
           errors: {},
         }

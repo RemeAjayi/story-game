@@ -1,13 +1,16 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, FormBuilder, Validators, FormArray} from '@angular/forms';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig} from '@angular/material/dialog';
-import {StoryService} from '../story.service';
+import {StoryService} from '../services/story.service';
 import {Story} from '../models/story';
+import {Player} from '../models/player';
 import {JoinSessionDialogComponent} from '../join-session-dialog/join-session-dialog.component';
 import {Router, ActivatedRoute} from '@angular/router';
 import {map, switchMap} from 'rxjs/operators';
 import {BehaviorSubject, Observable} from "rxjs";
 import {Config} from '../models/Config';
+import { PlayerService } from '../services/player.service';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-join-session',
@@ -16,7 +19,8 @@ import {Config} from '../models/Config';
 })
 export class JoinSessionComponent implements OnInit {
   inviteCode: any;
-  model: Story;
+  story: Story;
+  player: Player;
   storyOwner = true;
   storyId: string;
   form: FormGroup;
@@ -28,10 +32,13 @@ export class JoinSessionComponent implements OnInit {
 
   constructor(
     private storyService: StoryService,
+    private playerService: PlayerService,
+    private dataService: DataService,
     private dialog: MatDialog,
     private router: Router,
     private route: ActivatedRoute) {
-    this.model = new Story('', '', '');
+    this.story = new Story('', '', '', '');
+    this.player = new Player('', '', '', '', '');
   }
 
   /* keep the approach of making people supply names and email when they are invited.
@@ -48,13 +55,11 @@ export class JoinSessionComponent implements OnInit {
        this.form = this.toFormGroup(this.formConfig);
     });
 
-
-
-    // this.storyId = this.route.snapshot.paramMap.get('id');
-    // // hide story title input with this flag
-    // if (this.storyId) {
-    //   this.storyOwner = false;
-    // }
+    this.storyId = this.route.snapshot.paramMap.get('id');
+    // hide story title input with this flag
+    if (this.storyId) {
+      this.storyOwner = false;
+    }
   }
 
   // create formGroup
@@ -70,12 +75,23 @@ export class JoinSessionComponent implements OnInit {
            });
            group[control.name] = checkboxArr;
          }  else {
-           group[control.name] = new FormControl('');
+           group[control.name] = new FormControl('', this.getValidators(control) );
          }
        }
      );
      return new FormGroup(group);
   }
+  // get validators from model
+  getValidators(control){
+    const validators = [];
+
+    if (control.required) {
+        validators.push(Validators.required);
+    }
+    return validators.length > 0 ? validators : [];
+
+  }
+
   // go to next page
   next() {
     this.saveFormValues('one');
@@ -93,65 +109,57 @@ export class JoinSessionComponent implements OnInit {
   toggleCheckedClass(obj) {
     obj.checked = !obj.checked;
   }
-  // openDialog() {
-  //
-  //   const dialogConfig = new MatDialogConfig();
-  //
-  //   // dialogConfig.disableClose = true;
-  //   dialogConfig.autoFocus = true;
-  //
-  //   dialogConfig.data = {
-  //     code: this.inviteCode
-  //   };
-  //
-  //   this.dialog.open(JoinSessionDialogComponent, dialogConfig);
-  //   const dialogRef = this.dialog.open(JoinSessionDialogComponent, dialogConfig);
-  //
-  //   dialogRef.afterClosed().subscribe(
-  //     data => this.router.navigate(['/story', this.inviteCode], {
-  //       relativeTo: this.route,
-  //       queryParams: {author: this.model.storyOwner}
-  //     })
-  //   );
-  // }
-  //
-  //
+ 
   saveFormValues(page) {
+
     if (this.form.valid) {
       this.formValues.push({page, formData: this.form.getRawValue()});
     }
   }
   onSubmit() {
     this.saveFormValues('two');
+   
+    this.player = Object.assign({playerEmail: this.dataService.getNewUserEmail() }, this.formValues[0].formData);
+    this.story = Object.assign({}, this.formValues[1].formData);
+    // this.player.playerEmail = ;
     console.log(this.formValues);
+    console.log(this.player);
+    console.log(this.player instanceof Player);
+      //  create new player
+  this.playerService.addNewPlayer(this.player).subscribe(
+    (data: Player) =>{
+     // if user navigated through invite code
+    if (this.storyId) {
+      // call join session method
+      this.storyService.joinSession(this.story, this.storyId).subscribe(
+        (response) => {
+          this.inviteCode = response._id;
+          // direct to write story component on success
+          this.router.navigate(['/story', this.inviteCode], {
+            relativeTo: this.route,
+            queryParams: {author: this.story.storyOwner}
+          });
+        },
+        (error) => {
+          return console.log(error);
+        }
+      );
+    } else {
+      this.storyService.addNewStory(this.story).subscribe(
+        (res) => {
+          this.inviteCode = res._id;
+        },
+        (error) => {
+          return console.log(error);
+        }
+      );
+    }
     this.isSubmitted = true;
-    // if user navigated through invite code
-    // if (this.storyId) {
-    //   // call join session method
-    //   this.storyService.joinSession(this.model, this.storyId).subscribe(
-    //     (data) => {
-    //       this.inviteCode = data._id;
-    //       // direct to write story component on success
-    //       this.router.navigate(['/story', this.inviteCode], {
-    //         relativeTo: this.route,
-    //         queryParams: {author: this.model.storyOwner}
-    //       });
-    //     },
-    //     (error) => {
-    //       return console.log(error);
-    //     }
-    //   );
-    // } else {
-    //   this.storyService.addNewStory(this.model).subscribe(
-    //     (data) => {
-    //       this.inviteCode = data._id;
-    //       this.openDialog();
-    //     },
-    //     (error) => {
-    //       return console.log(error);
-    //     }
-    //   );
-    // }
+    },
+    (error)=>{
+      alert(error);
+    }
+  )
   }
 
 

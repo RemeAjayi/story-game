@@ -7,12 +7,14 @@
                     <div class="cta text-brand">
                         <h1 class="moving-h1">Write stories with your friends</h1>
                         <p class="moving-p">Have a memorable story with your friend? Collaborate in an interactive way and share it for the world to see.</p>
-                        <div class="input-group mb-3">
-                            <input type="text" class="custom-input-round-md form-control" placeholder="Enter your email to begin" aria-label="Recipient's username" aria-describedby="custom-input-round-btn-md-1">
+                        <div class="input-group">
+                            <input type="email" class="custom-input-round-md form-control" placeholder="Enter your email to begin" aria-label="Recipient's username" aria-describedby="custom-input-round-btn-md-1"  [(ngModel)]="email">
                             <div class="input-group-append">
                               <span class="input-group-text text-center d-flex justify-content-center custom-input-round-btn-md" id="custom-input-round-btn-md-1" (click)="getStarted()">Get Started</span>
                             </div>
-                          </div>                    </div>
+                          </div> 
+                          <small *ngIf="errorMsg" class="text-danger mb-3">{{errorMsg}}</small>                  
+                         </div>
                 </div>
                 <div class="col-md-6 d-flex align-items-center justify-content-center">
                 <img  width="350px" class="img-fluid" src="../../assets/img/Group 3042.png">
@@ -69,9 +71,9 @@
     </div>
   </div>
   <div class="input-group mb-3">
-    <input type="text" class="custom-input-round-md form-control" placeholder="Enter your email to begin" aria-label="Recipient's username" aria-describedby="custom-input-round-btn-md-3">
+    <input type="email" class="custom-input-round-md form-control" placeholder="Enter your email to begin" aria-label="Recipient's username" aria-describedby="custom-input-round-btn-md-3" [(ngModel)]="email">
     <div class="input-group-append">
-      <span class="input-group-text text-center d-flex justify-content-center custom-input-round-btn-md" id="custom-input-round-btn-md-3">Get Started</span>
+      <span class="input-group-text text-center d-flex justify-content-center custom-input-round-btn-md" id="custom-input-round-btn-md-3" (click)="getStarted()">Get Started</span>
     </div>
   </div>
         </div>
@@ -101,7 +103,7 @@
           <h2 class="text-white my-2">Publish your story with a wider audience</h2>
           <p class="text-white">Gets started today</p>
           <div class="input-group mt-5 mb-4 mx-auto w-md-50">
-            <input type="text" class="custom-input-round-md form-control" placeholder="Enter your email to begin" aria-label="Recipient's username" aria-describedby="custom-input-round-btn-md-2">
+            <input type="email" class="custom-input-round-md form-control" placeholder="Enter your email to begin" aria-label="Recipient's username" aria-describedby="custom-input-round-btn-md-2"  [(ngModel)]="email">
             <div class="input-group-append">
               <span class="input-group-text text-center d-flex justify-content-center custom-input-round-btn-md" id="custom-input-round-btn-md-2">Get Started</span>
             </div>

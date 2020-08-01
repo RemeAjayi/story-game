@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
+import {DataService} from "../services/data.service";
+import {ValidationService} from "../services/validation.service";
 
 @Component({
   selector: 'app-home',
@@ -7,12 +9,19 @@ import {Router} from "@angular/router";
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
-  constructor(private router: Router) { }
+  email: string;
+  errorMsg: string;
+  constructor(private router: Router, public dataService: DataService, private validationService: ValidationService) { }
 
   ngOnInit() {
   }
   getStarted() {
-    this.router.navigate(['/story/join']);
+    if (this.validationService.validateEmail(this.email)){
+      this.dataService.setNewUserEmail(this.email);
+      this.router.navigate(['/story/join']);
+    }
+    else{
+        this.errorMsg = "Please enter a valid email";
+    }
   }
 }

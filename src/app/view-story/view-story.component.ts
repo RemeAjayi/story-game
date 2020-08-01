@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {StoryService} from "../story.service";
+import {StoryService} from "../services/story.service";
 
 @Component({
   selector: 'app-view-story',

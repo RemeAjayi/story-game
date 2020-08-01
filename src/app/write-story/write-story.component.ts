@@ -1,7 +1,7 @@
 import {Component, HostListener, OnInit, Renderer2, ViewChild, ElementRef} from '@angular/core';
 import {Entry} from '../models/entry';
 import {NgModel} from '@angular/forms';
-import {StoryService} from '../story.service';
+import {StoryService} from '../services/story.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';

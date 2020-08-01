@@ -49,6 +49,8 @@
                   <div>
                     <input  [id]="model.name" [type]="model.type" [formControlName]="model.name" class="form-field" placeholder="{{model.placeholder}}">
                   </div>
+                    <div *ngIf="model.name.invalid && (model.name.dirty || model.name.touched)" class="alert alert-danger">
+                      <small *ngIf="model.name.errors.required">Name is required.</small></div>
                 </ng-container>
                 <!--Select-->
                 <ng-container *ngSwitchCase="'select'">
@@ -57,6 +59,8 @@
                     <option *ngFor="let option of model.options" [value]="option.value">
                       {{option.value}} {{option.label}}</option>
                   </select>
+                  <div *ngIf="model.name.invalid && (model.name.dirty || model.name.touched)" class="alert alert-danger">
+                    <small *ngIf="model.name.errors.required">Name is required.</small></div>
                 </ng-container>
                 <!--File Upload-->
                 <ng-container *ngSwitchCase="'file'">
@@ -78,10 +82,12 @@
                       </label>
                     </div>
                   </div>
+                  <div *ngIf="model.name.invalid && (model.name.dirty || model.name.touched)" class="alert alert-danger">
+                    <small *ngIf="model.name.errors.required">Category is required.</small></div>
                 </ng-container>
               </div>
             </ng-container>
-            <div class="w-80 mx-auto">
+                        <div class="w-80 mx-auto">
               <button *ngIf="currentPage == 0" type="submit" class="button--brand w-100" id="createAcctBtn" [disabled]="!form.valid" (click)="next()">Create your account</button>
             </div>
             <div class="w-80 mx-auto">

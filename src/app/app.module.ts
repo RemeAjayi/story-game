@@ -19,6 +19,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { AllStoriesComponent } from './all-stories/all-stories.component';
+import { PlayerService } from './services/player.service';
+import { StoryService } from './services/story.service';
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 @NgModule({
@@ -44,7 +46,10 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     HttpClientModule,
     SocketIoModule.forRoot(config)
   ],
-  providers: [],
+  providers: [
+    PlayerService,
+    StoryService
+  ],
   bootstrap: [AppComponent],
   entryComponents: [JoinSessionDialogComponent]
 })
