@@ -21,6 +21,7 @@ import { LoginComponent } from './login/login.component';
 import { AllStoriesComponent } from './all-stories/all-stories.component';
 import { PlayerService } from './services/player.service';
 import { StoryService } from './services/story.service';
+import { ComingSoonComponent } from './coming-soon/coming-soon.component';
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 @NgModule({
@@ -34,7 +35,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     NavbarComponent,
     FooterComponent,
     LoginComponent,
-    AllStoriesComponent
+    AllStoriesComponent,
+    ComingSoonComponent
   ],
   imports: [
     BrowserModule,

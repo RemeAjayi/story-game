@@ -186,6 +186,11 @@ $aqua: #E8FFFE;
 .section-two{
 	background-color: #ffffff;
 }
+#section-two-parent{
+  background-image: url("../../assets/img/blob-green.svg");
+  background-repeat: no-repeat;
+  background-position: right;
+}
 // stepper
 .stepper-container {
 	width: 25%;
