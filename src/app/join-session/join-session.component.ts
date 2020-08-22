@@ -29,6 +29,7 @@ export class JoinSessionComponent implements OnInit {
   currentPageSubject = new BehaviorSubject<number>(0);
   formValues = [];
   isSubmitted: boolean;
+  imageUrl: string;
 
   constructor(
     private storyService: StoryService,
@@ -71,7 +72,7 @@ export class JoinSessionComponent implements OnInit {
          if (control.type === 'checkbox-group') {
            const checkboxArr = new FormArray([]);
            control.options.forEach((item, index) => {
-             checkboxArr.push(new FormControl(''));
+              checkboxArr.push(new FormControl(''));
            });
            group[control.name] = checkboxArr;
          }  else {
@@ -113,53 +114,108 @@ export class JoinSessionComponent implements OnInit {
   saveFormValues(page) {
 
     if (this.form.valid) {
-      this.formValues.push({page, formData: this.form.getRawValue()});
+      let obj = this.form.getRawValue();
+      obj = this.transformObj(obj);
+      this.formValues.push({page, formData: obj});
+    }
+    console.log(this.formValues);
+
+  }
+
+  transformObj(obj) {
+    debugger
+    Object.keys(obj).forEach((key) => {
+
+      // transform checkbox-group
+      if (key.startsWith('category')) {
+        obj[key] = this.transformCheckboxGroup(key, obj[key]);
+        obj[key] = obj[key].toString();
+      }
+    });
+
+    return obj;
+  }
+
+  transformCheckboxGroup(key, arr) {
+    debugger
+    let config = this.formConfig[1].controls[2];
+    const values = [];
+
+    if (config) {
+      if (arr.length > 0) {
+        arr.forEach((item, index) => {
+          if (item) {
+            values.push(config.options[index].label);
+          }
+        });
+      }
+    }
+    return JSON.stringify(values);
+  }
+
+  // save story Image
+  saveStoryImage(event){
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      const formData = new FormData();
+      formData.append('upload', file, file.name);
+      console.log(JSON.stringify(formData));
+      this.storyService.addStoryImage(formData).subscribe(
+        (res) =>
+        {
+            this.imageUrl = res.url;
+        },
+        (error) => {
+          alert(error);
+        }
+      );
     }
   }
+
   onSubmit() {
     this.saveFormValues('two');
    
     this.player = Object.assign({playerEmail: this.dataService.getNewUserEmail() }, this.formValues[0].formData);
-    this.story = Object.assign({}, this.formValues[1].formData);
+    this.story = Object.assign({storyImageUrl: this.imageUrl}, this.formValues[1].formData);
+    debugger;
     // this.player.playerEmail = ;
     console.log(this.formValues);
-    console.log(this.player);
-    console.log(this.player instanceof Player);
       //  create new player
   this.playerService.addNewPlayer(this.player).subscribe(
     (data: Player) =>{
+      debugger;
      // if user navigated through invite code
-    if (this.storyId) {
-      // call join session method
-      this.storyService.joinSession(this.story, this.storyId).subscribe(
-        (response) => {
-          this.inviteCode = response._id;
-          // direct to write story component on success
-          this.router.navigate(['/story', this.inviteCode], {
-            relativeTo: this.route,
-            queryParams: {author: this.story.storyOwner}
-          });
-        },
-        (error) => {
-          return console.log(error);
-        }
-      );
-    } else {
-      this.storyService.addNewStory(this.story).subscribe(
-        (res) => {
-          this.inviteCode = res._id;
-        },
-        (error) => {
-          return console.log(error);
-        }
-      );
-    }
     this.isSubmitted = true;
     },
     (error)=>{
       alert(error);
     }
-  )
+  );
+  if (this.storyId) {
+    // call join session method
+    this.storyService.joinSession(this.story, this.storyId).subscribe(
+      (response) => {
+        this.inviteCode = response._id;
+        // direct to write story component on success
+        this.router.navigate(['/story', this.inviteCode], {
+          relativeTo: this.route,
+          queryParams: {author: response.storyOwner}
+        });
+      },
+      (error) => {
+        return console.log(error);
+      }
+    );
+  } else {
+    this.storyService.addNewStory(this.story).subscribe(
+      (res) => {
+        this.inviteCode = res._id;
+      },
+      (error) => {
+        return console.log(error);
+      }
+    );
+  }
   }
 
 

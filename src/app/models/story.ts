@@ -1,9 +1,9 @@
 export class Story {
     constructor(
         public storyTitle: string,
-        public storyOwner: string,
-        public storyOwnerName: string, 
-        public storyImage: any
+        public storyImageUrl: string,
+        public category: any,
+        public content: any
     ) { }
 
 }

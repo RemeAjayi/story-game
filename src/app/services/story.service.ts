@@ -4,25 +4,22 @@ import { Observable} from 'rxjs';
 import { Story } from '../models/story';
 import * as io from 'socket.io-client';
 import {environment} from "../../environments/environment";
-
+import { Endpoints } from "../endpoints";
 
 @Injectable()
 export class StoryService {
   observable: Observable<string>;
   private socket;
 
-  private CREATE_STORY = environment.baseUrl + '/story';
-  private join_session = environment.baseUrl + '/story/join/';
-  private url = environment.baseUrl;
   constructor(private http: HttpClient) {
-    this.socket = io(this.url);
+    this.socket = io(Endpoints.BASE);
   }
 
   addNewStory(story: Story): Observable<any> {
-    return this.http.post<Story>(this.CREATE_STORY, story);
+    return this.http.post<Story>(Endpoints.CREATE_STORY, story);
   }
   joinSession(story: Story, id): Observable<any> {
-    return this.http.post<Story>(this.join_session + id, story);
+    return this.http.post<Story>(Endpoints.JOIN_SESSION + id, story);
   }
 
   addNewEntry(obj) {
@@ -35,8 +32,16 @@ export class StoryService {
     });
   }
 getStoryByID(id) {
-  return this.http.get<any>(this.CREATE_STORY + '/' +  id);
+  return this.http.get<any>(Endpoints.CREATE_STORY + '/' +  id);
 }
+
+ addStoryImage(formData){
+  // let headers = new Headers();
+  // headers.append('Content-Type', 'multipart/form-data');
+  // headers.append('Accept', 'application/json');
+  // let options = new RequestOptions({ headers: headers });
+   return this.http.post<any>(Endpoints.UPLOAD_STORY_IMAGE, formData);
+ }
 }
-// POST: player joins story session
-// joinStory
+
+
