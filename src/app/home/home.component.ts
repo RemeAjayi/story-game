@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
   getStarted() {
     if (this.validationService.validateEmail(this.email)){
       this.dataService.setNewUserEmail(this.email);
-      this.router.navigate(['/story/join']);
+      this.router.navigate(['/add-player']);
     }
     else{
         this.errorMsg = "Please enter a valid email";

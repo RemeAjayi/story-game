@@ -1,0 +1,53 @@
+<div class="container-fluid wrapper-div">
+    <div class="row h-100">
+      <div class="col-lg-6 h-100 d-flex align-items-center justify-content-center">
+        <div class="form-card-custom text-center w-lg-75 w-100">
+          <div class="form-header d-flex flex-row justify-content-center">
+            <img src="../../assets/img/penpal-logo.PNG" width="35px" alt="logo" class="mr-2">
+            <span class="text-brand logo-text">Moments'</span></div>
+            <h3 class="logo-text text-brand my-5">Write your first story</h3>
+  
+            <form [formGroup]="form" id="form" (ngSubmit)="onSubmit()">
+              <ng-container *ngFor="let model of formConfig">
+                <div [ngSwitch]="model.type">
+                  <!-- Default input type (Number, Text field) -->
+                  <ng-container *ngSwitchDefault class="form-group mb-2">
+                    <div>
+                      <input  [id]="model.name" [type]="model.type" [formControlName]="model.name" class="form-field" placeholder="{{model.placeholder}}">
+                    </div>
+                      <div *ngIf="model.name.invalid && (model.name.dirty || model.name.touched)" class="alert alert-danger">
+                        <small *ngIf="model.name.errors.required">Name is required.</small></div>
+                  </ng-container>
+                  <!--File Upload-->
+                  <ng-container *ngSwitchCase="'file'">
+                    <div class="upload-file-parent w-80 mx-auto d-flex align-items-center justify-content-center">
+                      <input [id]="model.name" class="upload" [type]="model.type" (change)="saveStoryImage($event, model.name)">
+                      <label [for]="model.name" class="upload-label mr-5">Upload your Story
+                        <img src="../../assets/img/attach.svg" alt="attach-file-icon">
+                      </label>
+                    </div>
+                  </ng-container>
+                  <!--Checkbox Group-->
+                  <ng-container *ngSwitchCase="'checkbox-group'">
+                    <div class="row no-gutter my-3 w-80 mx-auto" [formArrayName]="model.name">
+                      <div class="col-4 col-md-3 checkbox-pill" *ngFor="let option of model.options; let i = index">
+                        <label [for]="option.label" [className]=" option.checked ? 'checkbox-label checked': 'checkbox-label'">
+                          <i class="pr-1 fas fa-times" *ngIf="option.checked"></i>{{option.label}}
+                          <input type="checkbox" [id]="option.label" [formControlName]="i"
+                                 [name]="option.label" [value]="option.value" (change)="toggleCheckedClass(option)">
+                        </label>
+                      </div>
+                    </div>
+                    <div *ngIf="model.name.invalid && (model.name.dirty || model.name.touched)" class="alert alert-danger">
+                      <small *ngIf="model.name.errors.required">Category is required.</small></div>
+                  </ng-container>
+                </div>
+              </ng-container>
+              <div class="w-80 mx-auto">
+                <button type="submit" class="button--brand w-100" id="submitButton" [disabled]="!form.valid">Begin your story</button>
+              </div>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>

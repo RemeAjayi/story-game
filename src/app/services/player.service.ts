@@ -23,7 +23,7 @@ export class PlayerService {
   }
 
   addNewPlayer(player: Player){
-    return this.http.post<Player>(Endpoints.NEW_PLAYER, player) 
+    return this.http.post<any>(Endpoints.NEW_PLAYER, player) 
     .pipe(
       catchError(this.handleError)
     );

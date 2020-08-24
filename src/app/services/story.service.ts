@@ -5,18 +5,27 @@ import { Story } from '../models/story';
 import * as io from 'socket.io-client';
 import {environment} from "../../environments/environment";
 import { Endpoints } from "../endpoints";
+import { HttpHeaders } from '@angular/common/http';
+import { StorageService } from './storage.service';
+
 
 @Injectable()
 export class StoryService {
   observable: Observable<string>;
   private socket;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private storageService: StorageService) {
     this.socket = io(Endpoints.BASE);
   }
 
   addNewStory(story: Story): Observable<any> {
-    return this.http.post<Story>(Endpoints.CREATE_STORY, story);
+    let headers = new HttpHeaders().set(
+      "Authorization",
+      `Bearer ${this.storageService.getAuthToken()}`
+    );
+    
+    console.log(this.storageService.getAuthToken());
+    return this.http.post<Story>(Endpoints.CREATE_STORY, story, {headers});
   }
   joinSession(story: Story, id): Observable<any> {
     return this.http.post<Story>(Endpoints.JOIN_SESSION + id, story);

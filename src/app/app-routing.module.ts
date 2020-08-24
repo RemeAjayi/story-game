@@ -7,6 +7,8 @@ import { HomeComponent } from './home/home.component';
 import {LoginComponent} from "./login/login.component";
 import {AllStoriesComponent} from "./all-stories/all-stories.component";
 import { ComingSoonComponent } from './coming-soon/coming-soon.component';
+import { AddPlayerComponent } from './add-player/add-player.component';
+import { AddStoryComponent } from './add-story/add-story.component';
 
 
 const routes: Routes = [
@@ -22,7 +24,14 @@ const routes: Routes = [
   { path: 'story/:id/view', component: ViewStoryComponent },
   { path: 'login', component: LoginComponent },
   { path: 'explore', component: AllStoriesComponent},
-  { path: 'coming-soon', component: ComingSoonComponent}
+  { path: 'coming-soon', component: ComingSoonComponent},
+  { 
+    path: 'add-player',
+   component: AddPlayerComponent},
+  {
+    path: 'add-story', 
+    component: AddStoryComponent
+  }
 ];
 
 @NgModule({

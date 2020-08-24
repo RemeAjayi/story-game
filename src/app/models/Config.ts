@@ -16,9 +16,7 @@ export class Config {
     {label: 'Fantasy', value: 'Fantasy'}
      ];
 
-  public static CONTROLS = [
-    {
-      controls: [
+  public static PLAYERCONTROLS =  [
         {name: 'password', type: 'password', required:true, validations: {}, errors: {}, placeholder: 'Enter Your Password'},
         {name: 'playerName', type: 'text', required:true, validations: {}, errors: {}, placeholder: 'Full Name *'},
         {
@@ -41,24 +39,21 @@ export class Config {
             pattern: 'Please enter a valid phone number'
           },
           placeholder: 'Phone Number'
-        }]
-    },
-   { controls: [
-        {name: 'title', type: 'text', required:true, validations: {}, errors: {}, placeholder: 'Title'},
-        {name: 'storyImage',
-          type: 'file',
-          validations: {},
-          errors: {},
-          placeholder: 'Upload Story Image'
-        },
-        {name: 'category',
-          type: 'checkbox-group',
-          options: Config.CATEGORY_LIST,
-          required:true,
-          validations: {},
-          errors: {},
-        }
-      ]
-    }
-    ];
+        }];
+
+  public static STORYCONTROLS = [
+  {name: 'storyTitle', type: 'text', required:true, validations: {}, errors: {}, placeholder: 'Title'},
+  {name: 'Image',
+  type: 'file',
+  validations: {},
+  errors: {},
+  placeholder: 'Upload Story Image'},
+  {name: 'category',
+  type: 'checkbox-group',
+  options: Config.CATEGORY_LIST,
+  required:true,
+  validations: {},
+  errors: {}}
+  ];
+
 }

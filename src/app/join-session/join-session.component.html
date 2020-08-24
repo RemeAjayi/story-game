@@ -37,65 +37,7 @@
         <div class="form-header d-flex flex-row justify-content-center">
           <img src="../../assets/img/penpal-logo.PNG" width="35px" alt="logo" class="mr-2">
           <span class="text-brand logo-text">Moments'</span></div>
-        <ng-container *ngIf="!isSubmitted">
-          <h3 class="logo-text text-brand my-5" *ngIf="currentPage == 0">Complete your personal details</h3>
-          <h3 class="logo-text text-brand my-5" *ngIf="currentPage == 1">Write your first story</h3>
-
-          <form [formGroup]="form" id="form" (ngSubmit)="onSubmit()">
-            <ng-container *ngFor="let model of formConfig[currentPage].controls">
-              <div [ngSwitch]="model.type">
-                <!-- Default input type (Number, Text field) -->
-                <ng-container *ngSwitchDefault class="form-group mb-2">
-                  <div>
-                    <input  [id]="model.name" [type]="model.type" [formControlName]="model.name" class="form-field" placeholder="{{model.placeholder}}">
-                  </div>
-                    <div *ngIf="model.name.invalid && (model.name.dirty || model.name.touched)" class="alert alert-danger">
-                      <small *ngIf="model.name.errors.required">Name is required.</small></div>
-                </ng-container>
-                <!--Select-->
-                <ng-container *ngSwitchCase="'select'">
-                  <select class="form-field form-field-select" [id]="model.name" [formControlName]="model.name" [name]="model.name">
-                    <option [value]="''" selected data-default>Select Option</option>
-                    <option *ngFor="let option of model.options" [value]="option.value">
-                      {{option.value}} {{option.label}}</option>
-                  </select>
-                  <div *ngIf="model.name.invalid && (model.name.dirty || model.name.touched)" class="alert alert-danger">
-                    <small *ngIf="model.name.errors.required">Name is required.</small></div>
-                </ng-container>
-                <!--File Upload-->
-                <ng-container *ngSwitchCase="'file'">
-                  <div class="upload-file-parent w-80 mx-auto d-flex align-items-center justify-content-center">
-                    <input [id]="model.name" class="upload" [type]="model.type" (change)="saveStoryImage($event, model.name)">
-                    <label [for]="model.name" class="upload-label mr-5">Upload your Story
-                      <img src="../../assets/img/attach.svg" alt="attach-file-icon">
-                    </label>
-                  </div>
-                </ng-container>
-                <!--Checkbox Group-->
-                <ng-container *ngSwitchCase="'checkbox-group'">
-                  <div class="row no-gutter my-3 w-80 mx-auto" [formArrayName]="model.name">
-                    <div class="col-4 col-md-3 checkbox-pill" *ngFor="let option of model.options; let i = index">
-                      <label [for]="option.label" [className]=" option.checked ? 'checkbox-label checked': 'checkbox-label'">
-                        <i class="pr-1 fas fa-times" *ngIf="option.checked"></i>{{option.label}}
-                        <input type="checkbox" [id]="option.label" [formControlName]="i"
-                               [name]="option.label" [value]="option.value" (change)="toggleCheckedClass(option)">
-                      </label>
-                    </div>
-                  </div>
-                  <div *ngIf="model.name.invalid && (model.name.dirty || model.name.touched)" class="alert alert-danger">
-                    <small *ngIf="model.name.errors.required">Category is required.</small></div>
-                </ng-container>
-              </div>
-            </ng-container>
-                        <div class="w-80 mx-auto">
-              <button *ngIf="currentPage == 0" type="submit" class="button--brand w-100" id="createAcctBtn" [disabled]="!form.valid" (click)="next()">Create your account</button>
-            </div>
-            <div class="w-80 mx-auto">
-              <button *ngIf="currentPage == 1" type="submit" class="button--brand w-100" id="submitButton" [disabled]="!form.valid">Begin your story</button>
-            </div>
-          </form>
-        </ng-container>
-        <ng-container *ngIf="isSubmitted">
+        <ng-container>
           <div class="d-flex flex-row justify-content-center">
             <img src="../../assets/img/Group%203045.png" alt="girls laughing" class="secondary-image">
             <img src="../../assets/img/Group%203044.png" alt="girls laughing" class="primary-image">
