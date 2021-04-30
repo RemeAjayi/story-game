@@ -1,5 +1,14 @@
 {
   "projects": {
-    "default": "penpal-45375"
+    "default": "ajayi-moments"
+  },
+  "targets": {
+    "ajayi-moments": {
+      "hosting": {
+        "story-game-frontend": [
+          "ajayi-moments"
+        ]
+      }
+    }
   }
 }
