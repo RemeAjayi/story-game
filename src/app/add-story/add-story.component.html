@@ -21,7 +21,7 @@
                   <!--File Upload-->
                   <ng-container *ngSwitchCase="'file'">
                     <div class="upload-file-parent w-80 mx-auto d-flex align-items-center justify-content-center">
-                      <input [id]="model.name" class="upload" [type]="model.type" (change)="saveStoryImage($event, model.name)">
+                      <input [id]="model.name" class="upload" [type]="model.type" (change)="saveStoryImage($event)">
                       <label [for]="model.name" class="upload-label mr-5">Upload your Story
                         <img src="../../assets/img/attach.svg" alt="attach-file-icon">
                       </label>

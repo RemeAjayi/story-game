@@ -120,7 +120,6 @@ export class AddStoryComponent implements OnInit {
   }
 
   transformCheckboxGroup(key, arr) {
-    debugger
     let config = this.formConfig[2];
     const values = [];
 
@@ -156,14 +155,15 @@ export class AddStoryComponent implements OnInit {
 
   onSubmit() {
     this.saveFormValues('two');
+    debugger;
     this.story = Object.assign({storyImage: this.imageUrl}, this.formValues[0].formData);
     console.log(this.story)
-    debugger;
       //  create new player
   if (this.storyId) {
     // call join session method
     this.storyService.joinSession(this.story, this.storyId).subscribe(
       (response) => {
+        debugger;
         this.inviteCode = response._id;
         // direct to write story component on success
         this.router.navigate(['/story', this.inviteCode], {
@@ -172,15 +172,19 @@ export class AddStoryComponent implements OnInit {
         });
       },
       (error) => {
+        debugger;
         return console.log(error);
       }
     );
   } else {
     this.storyService.addNewStory(this.story).subscribe(
       (res) => {
+        debugger;
         this.inviteCode = res._id;
+        this.router.navigate(['/story/join']);
       },
       (error) => {
+        debugger;
         return console.log(error);
       }
     );

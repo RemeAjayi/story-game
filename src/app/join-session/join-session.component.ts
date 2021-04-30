@@ -54,5 +54,8 @@ export class JoinSessionComponent implements OnInit {
   }
 
 
-
+takeToWriteStory()
+{
+  this.router.navigate(['story/write']);
+}
 }

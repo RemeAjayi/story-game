@@ -20,7 +20,7 @@ export class WriteStoryComponent implements OnInit {
   messages = [];
   message: string;
   date = new Date();
-  private storyListVisible = true;
+  storyListVisible = true;
   private isVisible: boolean;
   private screenSize: number;
   @ViewChild('paragraphs', {static: false}) paragraphs: ElementRef;
@@ -36,38 +36,39 @@ export class WriteStoryComponent implements OnInit {
 
 
   ngOnInit() {
+    debugger;
     this.screenSize = window.innerWidth;
-    console.log(this.screenSize)
-    //   this.storyId = this.route.snapshot.paramMap.get('id');
-  //   // retrieve author for this url
-  //   this.route.queryParams.subscribe(params => {
-  //       this.author = params.author;
-  //     });
-  //   // retrieve story title from backend
-  //   this.storyService.getStoryByID(this.storyId).subscribe((data) => {
-  //     this.title = data.storyTitle;
-  //   });
-  //   // retrieve messages emitted
-  //   this.storyService.getMessages().subscribe((data) => {
-  //     this.messages.push(data.data);
-  //   });
+    this.storyId = this.route.snapshot.paramMap.get('id');
+    // retrieve author for this url
+    this.route.queryParams.subscribe(params => {
+        this.author = params.author;
+      });
+    // retrieve story title from backend
+    this.storyService.getStoryByID(this.storyId).subscribe((data) => {
+      this.title = data.storyTitle;
+    });
+    // retrieve messages emitted
+    this.storyService.getMessages().subscribe((data) => {
+      this.messages.push(data.data);
+    });
   }
 
-  // onSubmit() {
-  //   //  pass story details with a dataservice and retrieve author  and story id from there
-  //   this.model.author = this.author;
-  //   this.model.timestamp = Date.now();
-  //   this.model.message = this.message;
-  //   const obj = {
-  //     id: this.storyId,
-  //     data: this.model
-  //   };
-  //   this.storyService.addNewEntry(obj);
-  // }
-  // finishStory() {
-  //   this.router.navigate(['/story', this.storyId, 'view'], {
-  //     relativeTo: this.route});
-  // }
+  onSubmit() {
+    debugger;
+    //  pass story details with a dataservice and retrieve author  and story id from there
+    this.model.author = this.author;
+    this.model.timestamp = Date.now();
+    this.model.message = this.message;
+    const obj = {
+      id: this.storyId,
+      data: this.model
+    };
+    this.storyService.addNewEntry(obj);
+  }
+  finishStory() {
+    this.router.navigate(['/story', this.storyId, 'view'], {
+      relativeTo: this.route});
+  }
   showStoryContent() {
    this.screenSize < 768 ? this.isVisible = true : this.isVisible = false;
    console.log(this.isVisible);

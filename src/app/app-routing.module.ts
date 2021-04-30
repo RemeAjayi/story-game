@@ -20,7 +20,7 @@ const routes: Routes = [
   },
   { path: 'story/:id', component: WriteStoryComponent },
 
-  { path: 'story', component: WriteStoryComponent },
+  { path: 'story/write', component: WriteStoryComponent },
   { path: 'story/:id/view', component: ViewStoryComponent },
   { path: 'login', component: LoginComponent },
   { path: 'explore', component: AllStoriesComponent},

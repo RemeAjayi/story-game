@@ -108,7 +108,7 @@
         </li>
       </ul>
     </section>
-    <form class="paragraphs__send">
+    <form class="paragraphs__send" (ngSubmit)="onSubmit()">
       <input name="paragraph_text" class="paragraphs__send-input" type="text" placeholder="Type here..." />
       <button class="paragraphs__send-button" type="submit"><i class="fa fa-paper-plane"></i></button>
     </form>
