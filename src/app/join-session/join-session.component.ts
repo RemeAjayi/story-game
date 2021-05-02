@@ -4,13 +4,14 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig} from '@angula
 import {StoryService} from '../services/story.service';
 import {Story} from '../models/story';
 import {Player} from '../models/player';
-import {JoinSessionDialogComponent} from '../join-session-dialog/join-session-dialog.component';
-import {Router, ActivatedRoute} from '@angular/router';
+import {Router, ActivatedRoute, ParamMap } from '@angular/router';
 import {map, switchMap} from 'rxjs/operators';
 import {BehaviorSubject, Observable} from "rxjs";
 import {Config} from '../models/Config';
 import { PlayerService } from '../services/player.service';
 import { DataService } from '../services/data.service';
+import {environment} from "../../environments/environment";
+
 
 @Component({
   selector: 'app-join-session',
@@ -18,7 +19,7 @@ import { DataService } from '../services/data.service';
   styleUrls: ['./join-session.component.scss']
 })
 export class JoinSessionComponent implements OnInit {
-  inviteCode: any;
+  id: any;
   story: Story;
   player: Player;
   storyOwner = true;
@@ -30,6 +31,9 @@ export class JoinSessionComponent implements OnInit {
   formValues = [];
   isSubmitted: boolean;
   imageUrl: string;
+  home: string;
+  base: string;
+  value: string;
 
   constructor(
     private storyService: StoryService,
@@ -38,8 +42,7 @@ export class JoinSessionComponent implements OnInit {
     private dialog: MatDialog,
     private router: Router,
     private route: ActivatedRoute) {
-    this.story = new Story('', '', '', '');
-    this.player = new Player('', '', '', '', '');
+    
   }
 
   /* keep the approach of making people supply names and email when they are invited.
@@ -49,13 +52,31 @@ export class JoinSessionComponent implements OnInit {
     with their details prepopulated(v2) - or not(v1).
   */
 
-  ngOnInit() {
-
-  }
+ ngOnInit() {
+  this.route.params.subscribe(params => {
+    this.id = params['id'];
+  });
+  this.home = this.router.url;
+  this.base = environment.devUrl;
+  this.value = `Hi, I started a short story on moments and would like you to write with me. Click this link to join ${this.base}${this.home}`;
+}
 
 
 takeToWriteStory()
 {
-  this.router.navigate(['story/write']);
+  this.router.navigate([`story/write/${this.id}`]);
+}
+copyToClipboard(val:string){
+  const selBox = document.createElement('textarea');
+  selBox.style.position = 'fixed';
+  selBox.style.left = '0';
+  selBox.style.top = '0';
+  selBox.style.opacity = '0';
+  selBox.value = val;
+  document.body.appendChild(selBox);
+  selBox.focus();
+  selBox.select();
+  document.execCommand('copy');
+  document.body.removeChild(selBox);
 }
 }

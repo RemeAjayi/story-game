@@ -42,20 +42,18 @@
             <img src="../../assets/img/Group%203045.png" alt="girls laughing" class="secondary-image">
             <img src="../../assets/img/Group%203044.png" alt="girls laughing" class="primary-image">
           </div>
-          <h3 class="logo-text text-brand mb-3">Invite a friend to join you in writing</h3>
+          <h3 class="logo-text text-brand mb-3">Invite a friend to write with you!</h3>
           <div class="copy-section mx-auto">
-            <textarea readonly="readonly" class="form-field-textarea copy">
-Hi, I just started this short story on moments, will you like to join me in writing. Please click on this link to join http://www.moments.com/jide_sanwoolu/stories/share_219273733484744
-            </textarea>
-            <div class="copy-section-footer d-flex justify-content-between w-80 mx-auto">
-              <button class="button--brand">Copy link</button>
+            <div class="col-md-11 text-left mb-3 copy-me" id="copyText">Hi, I started a short story on moments and would like you to write with me. Click this link to join <span class="primary-text">{{base}}{{home}}</span>
+            </div>
+            <div class="copy-section-footer d-flex justify-content-between mx-auto">
+              <button class="button--brand" (click)="copyToClipboard(value)">Copy text</button>
               <div class="to-the-right">
-                <span class="mr-2">Copy link</span>
                 <img src="../../assets/img/facebook.svg" class="mr-2">
                 <img src="../../assets/img/twitter.svg">
               </div>
             </div>
-            <div><button class="button--brand" (click)=takeToWriteStory()>
+            <div><button class="button--brand" (click)="takeToWriteStory()">
               Start Writing
             </button></div>
           </div>

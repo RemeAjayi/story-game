@@ -166,7 +166,7 @@ export class AddStoryComponent implements OnInit {
         debugger;
         this.inviteCode = response._id;
         // direct to write story component on success
-        this.router.navigate(['/story', this.inviteCode], {
+        this.router.navigate(['/story/join', this.inviteCode], {
           relativeTo: this.route,
           queryParams: {author: response.storyOwner}
         });
@@ -181,7 +181,7 @@ export class AddStoryComponent implements OnInit {
       (res) => {
         debugger;
         this.inviteCode = res._id;
-        this.router.navigate(['/story/join']);
+        this.router.navigate([`/story/share/${this.inviteCode}`]);
       },
       (error) => {
         debugger;

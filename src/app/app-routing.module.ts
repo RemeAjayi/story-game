@@ -14,14 +14,14 @@ import { AddStoryComponent } from './add-story/add-story.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home',  redirectTo: '', pathMatch: 'full'},
-  { path: 'story/join', component: JoinSessionComponent },
+  { path: 'story/share/:id', component: JoinSessionComponent },
   {
     path: 'story/join/:id', component: JoinSessionComponent,
   },
-  { path: 'story/:id', component: WriteStoryComponent },
+  { path: 'story/write/:id', component: WriteStoryComponent },
 
-  { path: 'story/write', component: WriteStoryComponent },
-  { path: 'story/:id/view', component: ViewStoryComponent },
+  // { path: 'story/write', component: WriteStoryComponent },
+  { path: 'story/view/:id', component: ViewStoryComponent },
   { path: 'login', component: LoginComponent },
   { path: 'explore', component: AllStoriesComponent},
   { path: 'coming-soon', component: ComingSoonComponent},
