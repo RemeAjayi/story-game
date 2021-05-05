@@ -10,6 +10,7 @@ import {BehaviorSubject, Observable} from "rxjs";
 import {Config} from '../models/Config';
 import { PlayerService } from '../services/player.service';
 import { DataService } from '../services/data.service';
+import { StorageService } from '../services/storage.service';
 import {environment} from "../../environments/environment";
 
 
@@ -34,11 +35,13 @@ export class JoinSessionComponent implements OnInit {
   home: string;
   base: string;
   value: string;
+  isInvited = true;
 
   constructor(
     private storyService: StoryService,
     private playerService: PlayerService,
     private dataService: DataService,
+    private storageService: StorageService,
     private dialog: MatDialog,
     private router: Router,
     private route: ActivatedRoute) {
@@ -53,6 +56,9 @@ export class JoinSessionComponent implements OnInit {
   */
 
  ngOnInit() {
+  if(this.storageService.getAuthToken()){
+    this.isInvited = false;
+  }
   this.route.params.subscribe(params => {
     this.id = params['id'];
   });
@@ -61,11 +67,11 @@ export class JoinSessionComponent implements OnInit {
   this.value = `Hi, I started a short story on moments and would like you to write with me. Click this link to join ${this.base}${this.home}`;
 }
 
-
 takeToWriteStory()
 {
   this.router.navigate([`story/write/${this.id}`]);
 }
+
 copyToClipboard(val:string){
   const selBox = document.createElement('textarea');
   selBox.style.position = 'fixed';

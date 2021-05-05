@@ -24,6 +24,8 @@ import { StoryService } from './services/story.service';
 import { ComingSoonComponent } from './coming-soon/coming-soon.component';
 import { AddStoryComponent } from './add-story/add-story.component';
 import { AddPlayerComponent } from './add-player/add-player.component';
+import { InvitedSignUpComponent } from './invited-sign-up/invited-sign-up.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 @NgModule({
@@ -40,7 +42,9 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     AllStoriesComponent,
     ComingSoonComponent,
     AddStoryComponent,
-    AddPlayerComponent
+    AddPlayerComponent,
+    InvitedSignUpComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

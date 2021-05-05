@@ -17,7 +17,6 @@
               <input id="password" type="password" formControlName="password" class="form-field" placeholder="Enter your password" required>
             </div>
             <div class="w-80 mx-auto">
-              <small [hidden]="loginForm.valid" class="text-danger">Please fill all required fields properly</small>
               <button type="submit" class="button--brand w-100" id="submitButton" [disabled]="!loginForm.valid">Sign In</button>
             </div>
           </form>
