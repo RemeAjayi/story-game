@@ -7,5 +7,8 @@ export class Endpoints{
     public static BASE = environment.baseUrl;
     public static NEW_PLAYER = environment.baseUrl + '/player';
     public static UPLOAD_STORY_IMAGE = environment.baseUrl + '/story/upload';
+    public static LOGIN = environment.baseUrl + '/login';
+    public static LOGOUT = environment.baseUrl + '/logout';
+
 }
 

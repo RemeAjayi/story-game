@@ -36,7 +36,6 @@ export class WriteStoryComponent implements OnInit {
 
 
   ngOnInit() {
-    debugger;
     this.screenSize = window.innerWidth;
     this.storyId = this.route.snapshot.paramMap.get('id');
     // retrieve author for this url

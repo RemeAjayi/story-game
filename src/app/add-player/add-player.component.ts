@@ -112,6 +112,7 @@ export class AddPlayerComponent implements OnInit {
     (data) =>{
       debugger;
      this.storageService.setAuthToken(data.token);
+     this.storageService.setCurrentUserId(data.player._id);
     },
     (error)=>{
       alert(error);

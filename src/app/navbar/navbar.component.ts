@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {StorageService} from '../services/storage.service'
 
 @Component({
   selector: 'app-navbar',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-
-  constructor() { }
+  id: string;
+  isId: boolean;
+  constructor(private storageService: StorageService) { }
 
   ngOnInit() {
+   this.id = this.storageService.getCurrentUserId();
+   this.isId = this.storageService.getAuthToken();
   }
 
 }

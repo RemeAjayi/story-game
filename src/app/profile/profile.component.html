@@ -1,3 +1,27 @@
-<p>profile works!</p>
 <!-- show details and stories
 clicking a story should take you to write story page -->
+<app-navbar></app-navbar>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-4">
+            <div class="story-thumbnail-pic mr-2 mb-3 d-flex justify-content-center justify-content-lg-start">
+                <img  width="230px"  src="../../assets/img/viola.webp" alt="story-image">
+              </div>
+        </div>
+        <div class="col-8">
+            <h4 class="text-secondary mb-5">{{player.playerName}}</h4>
+
+            <h6 class="text-secondary mb-3">CONTACT INFORMATION</h6>
+            <span>Phone:</span> <span class="ml-5 text-brand">{{player.phoneNo}}</span>
+            <br>
+            <span>Email:</span> <span class="ml-5 text-brand">{{player.playerEmail}}</span>
+            <br>
+            <button class="button button--success button-round mt-4 mb-2" (click)="goToWriteStory()">Write Story</button>
+            <br>
+            <button class="button button--danger button-round" (click)="logout()">Logout</button>
+        </div>
+    </div>
+    <!-- stories -->
+    <hr>
+    <h6 class="text-secondary">STORIES</h6>
+</div>

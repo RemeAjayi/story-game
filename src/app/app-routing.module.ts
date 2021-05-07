@@ -9,6 +9,7 @@ import {AllStoriesComponent} from "./all-stories/all-stories.component";
 import { ComingSoonComponent } from './coming-soon/coming-soon.component';
 import { AddPlayerComponent } from './add-player/add-player.component';
 import { AddStoryComponent } from './add-story/add-story.component';
+import {ProfileComponent} from './profile/profile.component';
 
 
 const routes: Routes = [
@@ -20,9 +21,10 @@ const routes: Routes = [
   },
   { path: 'story/write/:id', component: WriteStoryComponent },
 
-  // { path: 'story/write', component: WriteStoryComponent },
+  { path: 'story/write', component: WriteStoryComponent },
   { path: 'story/view/:id', component: ViewStoryComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'profile/:id', component: ProfileComponent },
   { path: 'explore', component: AllStoriesComponent},
   { path: 'coming-soon', component: ComingSoonComponent},
   { 
